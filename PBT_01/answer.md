@@ -1,0 +1,81 @@
+Phần A:
+Câu A1 (5đ) — HTTP & Browser; Đọc chương 01 (01_introduction_html_universe.md)
+1. Khi bạn gõ https://shopee.vn vào trình duyệt và nhấn Enter, hãy liệt kê đúng thứ tự ít nhất 5 bước xảy ra (từ DNS lookup đến render):
+B1:DNS lookup
+B2:HTTP request
+B3:HTTP response
+B4:Tải tài nguyên phụ
+B5:Render trang
+2. Trong DevTools của Chrome, tab Network cho thấy thông tin gì? Hãy mở một trang web bất kỳ, chụp screenshot tab Network và đánh dấu (vẽ mũi tên/khoanh tròn) vào:
+Status Code của request đầu tiên
+Tổng thời gian load trang
+Một request trả về file CSS
+-Tab Network hiển thị toàn bộ các request mà trình duyệt gửi khi tải trang bao gồm
+(HTML, CSS, JavaScript, hình ảnh, font, v.v.)
+
+Câu A2 (5đ) — Semantic HTML; Đọc chương 4
+Trang web trên bị Google đánh giá điểm SEO thấp vì nó lạm dụng quá nhiều thẻ <div>, không sử dụng các thẻ semantic.
+Có 5 lỗi dưới đây: 
+1. Không sử dụng thẻ cấu trúc ngữ nghĩa (Semantic tags) cho các vùng của trang:
+-Sử dụng <div class="header">, <div class="main">, <div class="footer"> là sai chuẩn HTML5. Cần sử dụng các thẻ <header>, <main>, và <footer> để Google phân vùng trang web dễ dàng.
+2. Thiếu thẻ điều hướng <nav> và sai cấu trúc danh sách:
+-Menu hiện tại đang dùng các thẻ <div> lồng nhau. Để tối ưu SEO, các liên kết điều hướng nội bộ phải được đặt trong thẻ <nav>, và thông thường nên được cấu trúc bằng thẻ danh sách <ul> và <li>.
+3. Không sử dụng thẻ Tiêu đề (Heading tags <h1> - <h6>):
+-Tên sản phẩm "iPhone 16 Pro" đang được để trong <div class="title">. Google cực kỳ chú trọng vào các thẻ Heading (<h1>, <h2>, v.v.) để xác định từ khóa và chủ đề chính của trang. Việc thiếu Heading khiến trang web gần như tàng hình trước các truy vấn tìm kiếm.
+4. Hình ảnh thiếu thuộc tính alt (Alternative text):
+Thẻ <img src="iphone.jpg"> không có thuộc tính alt. Thuộc tính này rất quan trọng vì bot Google không thể "xem" ảnh, nó chỉ đọc chữ.
+5. Nội dung sản phẩm không được nhóm đúng cách:
+-Khối thông tin của một sản phẩm nên được đặt trong thẻ <article> (dành cho nội dung độc lập, có thể tách rời) hoặc <section> thay vì một thẻ <div class="product"> chung chung.
+Code đã sửa:
+<header>
+    <div>ShopTLU</div>
+    <nav>
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/products">Sản phẩm</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <article>
+        <h1>iPhone 16 Pro</h1>
+        <p>25.990.000đ</p>
+        <div>
+            <img src="iphone.jpg" alt="Điện thoại iPhone 16 Pro chính hãng">
+        </div>
+    </article>
+</main>
+
+<footer>
+    <p>© 2026 ShopTLU</p>
+</footer>
+
+Câu A3 (5đ) — Block vs Inline
+Không chạy code, hãy vẽ tay (hoặc mô tả bằng text art) kết quả hiển thị của đoạn HTML sau. Giải thích tại sao.
+TextArt:
+Hộp 1
+Text AText B
+Hộp 2
+Text CText D   <-- (Chữ "Text D" sẽ được in đậm)
+Hộp 3
+Giải thích:
+-Thẻ <div> chúng tự động bắt đầu trên một dòng mới và chiếm toàn bộ chiều rộng của trang, bất cứ nội dung nào đứng trước hoặc đứng sau một thẻ <div> đều bị ép phải nằm ở dòng khác.(tức là sẽ tự động xuống dòng)
+-Thẻ <span> và <strong> chúng chỉ chiếm một khoảng không gian vừa đúng bằng chiều rộng của đoạn chữ bên trong nó.(tức là inline được viết chung 1 dòng)
+
+Câu A4 (5đ) — Table
+Đọc chương 05. Giải thích sự khác nhau giữa <thead>, <tbody>, <tfoot>. Tại sao KHÔNG NÊN dùng table để tạo layout trang web? (Ghi rõ ít nhất 3 lý do)
+1. Sự khác nhau giữa <thead>, <tbody>, <tfoot>
+-Ba thẻ này được dùng để chia cấu trúc của một bảng (<table>) thành 3 phần rõ ràng mang tính ngữ nghĩa (semantic):
+<thead> (Table Header): Phần đầu bảng. Nơi chứa các ô tiêu đề cột (ví dụ: STT, Họ tên, Giá tiền).
+<tbody> (Table Body): Phần thân bảng. Nơi chứa toàn bộ dữ liệu nội dung chính của bảng. Một bảng có thể có nhiều <tbody>.
+<tfoot> (Table Footer): Phần chân bảng. Nơi chứa các dòng tổng kết, ghi chú ở cuối (ví dụ: Tổng cộng, Trung bình, Thành tiền).
+2. Tại sao KHÔNG NÊN dùng Table để tạo Layout trang web?
+-Không hỗ trợ Responsive (Kém linh hoạt)
+-Ảnh hưởng xấu đến SEO và Accessibility (Khả năng tiếp cận)
+-Code cồng kềnh, cực kỳ khó bảo trì
+
+
+
+
+ 
