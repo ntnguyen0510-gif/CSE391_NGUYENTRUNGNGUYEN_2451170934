@@ -193,5 +193,16 @@ Câu C1 (10đ) — Thiết kế cấu trúc
     <p>&copy; 2026 Cửa hàng của Nguyên</p>
 </footer>
 
+Câu C2 (10đ) — So sánh & Tranh luận
+Chào đồng nghiệp, tôi hiểu việc chỉ dùng thẻ <div> kết hợp với class có vẻ nhanh gọn và quen tay, nhưng đứng ở góc độ phát triển web chuyên nghiệp, bỏ qua Semantic HTML là một sai lầm lớn. Dưới đây là những lý do cốt lõi:
+
+Thứ nhất, về mặt SEO (Tối ưu hóa công cụ tìm kiếm): Các bot của Google (trình thu thập dữ liệu) "mù" về mặt giao diện (CSS), chúng chỉ đọc mã nguồn HTML. Một trang toàn thẻ <div> đối với bot giống như một cuốn sách không có tiêu đề, mục lục hay chia chương. Khi bạn sử dụng các thẻ như <article>, <main>, hay <h1>, bot lập tức hiểu được đâu là nội dung cốt lõi để ưu tiên lập chỉ mục, giúp trang web có thứ hạng cao hơn rất nhiều so với một mớ <div class="content"> vô hồn.
+
+Thứ hai, về Accessibility (Tính tiếp cận): Người khiếm thị sử dụng trình đọc màn hình (Screen Reader) để lướt web. Phần mềm này hoàn toàn phụ thuộc vào thẻ Semantic để điều hướng.
+
+Ví dụ chứng minh: Nếu bạn làm một nút bấm bằng <div class="btn" onclick="...">, người dùng chuột bình thường vẫn click được. Nhưng với người khiếm thị, trình đọc màn hình sẽ không báo cho họ biết đây là một "nút bấm", và họ cũng không thể dùng phím Enter hay Space trên bàn phím để kích hoạt nó. Đổi lại, nếu dùng đúng thẻ <button>, trình duyệt sẽ tự động hỗ trợ mọi tính năng tiếp cận này. Việc tốn 1 giây gõ thẻ <button> giúp bạn tiết kiệm hàng giờ viết thêm code Javascript để sửa lỗi.
+
+Tuy nhiên, thẻ <div> vẫn có chỗ đứng riêng: Thẻ <div> hoàn toàn phù hợp và chuẩn xác khi nó đóng vai trò là một "wrapper" (vùng chứa) không mang ý nghĩa nội dung, chỉ dùng để chia bố cục layout (CSS Flexbox/Grid), hoặc làm các mảng trang trí giao diện (ví dụ: <div class="container"> hay <div class="overlay">). Tóm lại: HTML Semantic dùng cho nội dung, còn <div> dùng cho giao diện.
+
 
  
