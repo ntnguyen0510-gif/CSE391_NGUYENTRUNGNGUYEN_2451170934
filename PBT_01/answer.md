@@ -89,6 +89,19 @@ Lỗi 10: Dòng 24, 25, 26 — Dùng sai thẻ cho phần Tiêu đề Bảng (Se
 Lỗi 11: Dòng 36 — Lạm dụng thẻ <main> (Lỗi Semantic nghiêm trọng) — Theo chuẩn HTML5, mỗi trang web chỉ được phép có duy nhất MỘT thẻ <main> hiển thị nội dung chính. Khối này chứa nội dung của thanh bên (Sidebar), nên thay vì dùng <main>, hãy đổi thành thẻ <aside>.
 Lỗi 12: Dòng 41 — Thiếu thẻ đóng văn bản </p> — Sửa <p>Copyright 2026 thành <p>Copyright 2026</p>.
 
+Bài B4: Phân tích trang web thegioididong.com
+
+1. Phân tích Semantic HTML5 trên trang chủ
+(Xem ảnh B4.1.png đính kèm)
+1)3 thẻ Semantic HTML5 mà trang đang sử dụng:**
+1. Thẻ <header>: Nằm ở phần trên cùng của trang, chứa khu vực logo, thanh tìm kiếm và giỏ hàng.
+2. Thẻ <section>: Được dùng để bọc khu vực chứa các banner khuyến mãi nổi bật nằm ngay bên dưới header.
+3. Thẻ <footer>: Nằm ở dưới cùng của trang, chứa thông tin liên hệ, tổng đài hỗ trợ và các chính sách bảo hành.
+2)2 thẻ KHÔNG dùng đúng chuẩn Semantic (Lỗi lạm dụng):**
+1. Thanh menu điều hướng chính: Trang web lạm dụng thẻ <div> để bọc các menu danh mục sản phẩm (như Điện thoại, Laptop) thay vì dùng thẻ <nav> chuẩn Semantic.
+2. Các nút bấm tương tác: Một số vị trí dùng thẻ <span> hoặc <div> lồng nhau để làm nút bấm (bắt sự kiện click để chuyển trang), đúng chuẩn thì phải dùng thẻ <a> hoặc <button>.
+
+Câu C1 (10đ) — Thiết kế cấu trúc
 
 
 
