@@ -102,7 +102,96 @@ Bài B4: Phân tích trang web thegioididong.com
 2. Các nút bấm tương tác: Một số vị trí dùng thẻ <span> hoặc <div> lồng nhau để làm nút bấm (bắt sự kiện click để chuyển trang), đúng chuẩn thì phải dùng thẻ <a> hoặc <button>.
 
 Câu C1 (10đ) — Thiết kế cấu trúc
+<header>
+    <nav aria-label="Menu chính">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/dien-thoai">Điện thoại</a></li>
+        </ul>
+    </nav>
+</header>
 
+<main>
+
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/dien-thoai">Điện thoại</a></li>
+            <li aria-current="page">iPhone 16</li>
+        </ol>
+    </nav>
+
+    <article class="product-detail">
+        
+        <section class="gallery">
+            <figure>
+                <img src="main.jpg" alt="Ảnh chính sản phẩm">
+            </figure>
+            
+            <ul>
+                <li><img src="thumb1.jpg" alt="Ảnh phụ 1"></li>
+                <li><img src="thumb2.jpg" alt="Ảnh phụ 2"></li>
+                <li><img src="thumb3.jpg" alt="Ảnh phụ 3"></li>
+                <li><img src="thumb4.jpg" alt="Ảnh phụ 4"></li>
+            </ul>
+        </section>
+
+        <section class="info">
+            <h1>iPhone 16 Pro Max 256GB</h1>
+            
+            <p>Giá: 
+                <strong>29.990.000đ</strong>
+            </p>
+            
+            <p>Đánh giá: ⭐⭐⭐⭐⭐ (150 đánh giá)</p>
+            <p>Mô tả: Điện thoại xịn nhất của Apple năm nay...</p>
+            
+            <button type="button">Mua ngay</button>
+        </section>
+
+        <section class="specs">
+            <h2>Thông số kỹ thuật</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <th scope="row">Màn hình</th>
+                        <td>6.7 inch, OLED</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="reviews">
+            <h2>Đánh giá từ khách hàng</h2>
+            
+            <article class="review-item">
+                <header>
+                    <h3>Khách hàng A</h3>
+                    <time datetime="2026-04-25">Ngày 25/04/2026</time>
+                </header>
+                <p>Máy mượt, chụp ảnh siêu đẹp!</p>
+            </article>
+        </section>
+
+    </article>
+
+    <aside class="related-products">
+        <h2>Sản phẩm tương tự</h2>
+        <ul>
+            <li>
+                <article>
+                    <h3><a href="#">iPhone 15 Pro</a></h3>
+                    <p>25.990.000đ</p>
+                </article>
+            </li>
+        </ul>
+    </aside>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Cửa hàng của Nguyên</p>
+</footer>
 
 
  
