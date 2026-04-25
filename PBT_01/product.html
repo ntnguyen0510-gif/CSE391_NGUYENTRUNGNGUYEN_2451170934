@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm nổi bật - Nguyễn Trung Nguyên</title>
+    <style>
+       
+        body {
+            background-color: #e6f7ff; 
+            font-family: Arial, sans-serif;
+        }
+
+        .wrapper {
+            width: 90%;
+            margin: auto;
+            border: 3px solid black; 
+            background-color: white;
+            padding: 10px;
+        }
+
+        header {
+            background-color: yellow; 
+            text-align: center;
+            border-bottom: 2px solid red; 
+            padding: 15px;
+        }
+
+        nav a {
+            background-color: lightgray; 
+            color: blue; 
+            border: 1px solid black;
+            padding: 5px 10px;
+            margin: 5px;
+            text-decoration: none; 
+            font-weight: bold;
+        }
+
+        article {
+            display: inline-block; 
+            width: 22%; 
+            margin: 1%;
+            vertical-align: top;
+            border: 2px dashed green; 
+            text-align: center;
+            background-color: #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        figure {
+            margin: 0;
+            padding: 5px;
+            border-bottom: 1px solid black;
+        }
+
+        img {
+            width: 100%; 
+            height: 150px;
+            object-fit: contain;
+            background-color: white; 
+        }
+
+        a.btn-mua {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+            border: 2px solid blue;
+            background-color: #ffebcd; 
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: orange; 
+            text-align: center;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        footer a {
+            color: yellow; 
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <h1>Shop Công Nghệ của Trung Nguyên</h1>
+            <nav>
+                <a href="#trang-chu">Trang chủ</a>
+                <a href="#san-pham">Sản phẩm nổi bật</a>
+                <a href="#so-sanh">Bảng so sánh</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="san-pham">
+                <h2 style="color: blue;">1. Sản phẩm nổi bật</h2>
+                
+                <article>
+                    <figure>
+                        <img src="data:image/webp;base64,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" alt="Sản phẩm 1">
+                    </figure>
+                    <h3>iPhone 15 Pro</h3>
+                    <p>Máy siêu mượt, chụp ảnh siêu đẹp.</p>
+                    <p>Giá: <strong>28.990.000đ</strong></p>
+                    <a href="#" class="btn-mua">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="data:image/webp;base64,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" alt="Sản phẩm 2">
+                    </figure>
+                    <h3>Galaxy S24 Ultra</h3>
+                    <p>Có bút S-Pen, zoom tới mặt trăng.</p>
+                    <p>Giá: <mark>33.990.000đ</mark></p> 
+                    <a href="#" class="btn-mua">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTpbH4HSJfnTZ7ltxU9qLwAwX3d1U09INwz5JtGoYzQKN8R8DexRGJIB280UlE_I3IUreRB4KD7qIdEMX6mpg3dvqvcgx2Evfgsi9TYVn208fiGvqaqECEXaoYnBBRHv--iuEhbtg&usqp=CAc" alt="Sản phẩm 3">
+                    </figure>
+                    <h3>MacBook Air M3</h3>
+                    <p>Laptop mỏng nhẹ, pin dùng cả ngày.</p>
+                    <p>Giá: <strong>27.990.000đ</strong></p>
+                    <a href="#" class="btn-mua">Mua ngay</a>
+                </article>
+
+                <article>
+                    <figure>
+                        <img src="data:image/webp;base64,UklGRnAEAABXRUJQVlA4IGQEAACQGgCdASqUAHEAPj0Oj0eiEREKgCADxLS3bq+VJ3cwsl7g92t4LzvgPuA+WnQr9W+wL+of+16/XoW/puMNe5Z8kZSspBNAU9+e8eSMI+hRY1mM/UML5iV91GDVYdaerX/nzQF4Etvi5tgkbVNArsN2axjj0jkEu+bvjZ+qKh6wdakzQ3BBYC25gxl8Isxb6FSvh+WjbQZ39el+QP5XD1UQKZkFVfG4ucqGnGg4Y3NoVxcO7+i6EX/hHEFJFKKwPsH+Iwf5niSZeb+Q3rp6GukrfnPoRplat7xaMYPMAAD+/TZE5j9/o6CUp1kgpTDwYPNHv7SVfrfVyj0BnD45rLXPqzTSsKRBZrz36X+VJjwT5spqCHXKM5/RdQUpo4kjlyB7POiqT3VzDVH0reX/0/eJIX/stVUcTxRohvib3kz1KwlLb/Z5OyNq51rrNUwunOQw7fdZrKP+p/rnGvcuXaPlkL13PlgfRpZ8DR1o6ls/8VoOjaGf0ZA52sh0Ma7FJDmkDWifE+q2BfhFFS1EtRHvsMpf/Kv/1GAesP/oC/dMq6EzJ98BqrAYAI8WdQpr/0if7WSuVReYqtqJ184KI+dkDr5pp+hoXLtEIz36ftAFi/BdnHHLIphFUNcHF9OEtCsEJJ9z22Rgst9FWTOqpuW1tYyjCb19+bCvaj68qRlxO+YPh3HYWpQ56a0Eqv8AbCuSKB3TW3vM/+h5KGSY5nypJFOdcZCFdjM73jx2ovavHzI5bxPDCZFY5nyGLfFhUdRNP+4chqVamfj07n4e/3pR9moR/PfoCf7U19u0scAbJsawEpqz21crDjpdXejW4wgWD5+dfaT8OPWL4NHKNfHYd10evPPkj2QHKPxQmnEvF6nU04MOvKudExVRvvS9NniPbesXhPR/1j+Asiq6Tn2Vq6Q+MkHvvVD37eoXd4lg7DPpF5Yl7Pdz0oF4OLt+92idB1x69GslInieatq5CCyit+Th4ygDoEjKW8TNzsx3d/dTayVNcdT3P/0GPKug9v2W0TKhyI6HuFjAhuPbWukzSgtEqYv5WnZxrtOWfXJwldgczNDjrKFDMGBGOI8VjDgJXk/K37RkDuoG1Td+1yKo16xwidY+X61JpbtXH6U8X4GbAExeIkBB7735fn1ZfYywlv4QdO59LckK0Vm8j5EspB20NHIrgiwJfgJPg6zZnAqVGZ1QyRAeK0rlYcvejMaHfqhueRCjN2+PSDC+vyFbtHMgaBYGnuCKQG7hNx7CY58t0dHknTlfvW0liL9rcxHYOcPC2FJRjGXXtGdzfR0s8Prk/Z+4EJuu55BE5Xa/Pk89ZfuXpDIhYs3A849Tswl4N1wOcBlto1eZO166LJJAyd/rposGW1WKP6buF7UFCy8U8wubmh4QQRm0zqJShR0nW+2blbiEmBQde+ZZdllXNAEV/pPxaDMErSPXbGKlU175XkwZeNvTH1PkrrV/lJwI+Na5mQwYXcb9r4qDewAAAAAAAA==" alt="Sản phẩm 4">
+                    </figure>
+                    <h3>AirPods Pro 2</h3>
+                    <p>Tai nghe chống ồn, âm thanh hay.</p>
+                    <p>Giá: <strong>6.190.000đ</strong></p>
+                    <a href="#" class="btn-mua">Mua ngay</a>
+                </article>
+
+            </section>
+
+            <hr>
+
+            <section id="so-sanh">
+                <h2 style="color: blue;">2. Bảng so sánh điện thoại</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Tiêu chí</th>
+                            <th colspan="3">Mẫu điện thoại</th>
+                        </tr>
+                        <tr>
+                            <th>iPhone 15 Pro</th>
+                            <th>Galaxy S24 Ultra</th>
+                            <th>Xiaomi 14 Pro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Màn hình</td>
+                            <td>6.1 inch</td>
+                            <td>6.8 inch</td>
+                            <td>6.73 inch</td>
+                        </tr>
+                        <tr>
+                            <td>Camera</td>
+                            <td>48 MP</td>
+                            <td>200 MP</td>
+                            <td>50 MP</td>
+                        </tr>
+                        <tr>
+                            <td>Pin</td>
+                            <td>3274 mAh</td>
+                            <td>5000 mAh</td>
+                            <td>4880 mAh</td>
+                        </tr>
+                        <tr>
+                            <td>Khung viền</td>
+                            <td>Titanium</td>
+                            <td>Titanium</td>
+                            <td>Nhôm</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" style="text-align: center; font-style: italic;">Thông số chỉ mang tính chất tham khảo cho bài tập môn Web</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>
+                <a href="#chinh-sach">Chính sách bảo hành</a> | 
+                <a href="#lien-he">Liên hệ hỗ trợ</a> | 
+                <a href="#faq">Hỏi đáp (FAQ)</a>
+            </p>
+            <p>© 2026 Nguyễn Trung Nguyên. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
