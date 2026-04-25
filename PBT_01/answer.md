@@ -75,6 +75,20 @@ Câu A4 (5đ) — Table
 -Ảnh hưởng xấu đến SEO và Accessibility (Khả năng tiếp cận)
 -Code cồng kềnh, cực kỳ khó bảo trì
 
+Bài B3 (15đ) — Debug HTML
+Lỗi 1: Dòng 1 — Khai báo DOCTYPE thiếu/sai cú pháp — Cần khai báo chuẩn HTML5. Sửa <!DOCTYPE> thành <!DOCTYPE html>.
+Lỗi 2: Dòng 1 — Thẻ <html> thiếu thuộc tính ngôn ngữ (Semantic) — Trình duyệt và máy quét SEO cần biết ngôn ngữ trang web. Sửa <html> thành <html lang="vi">.
+Lỗi 3: Dòng 2 — Thiếu thẻ đóng của tiêu đề — Thẻ <title> chưa được đóng. Sửa thành <title>Trang web</title>.
+Lỗi 4: Dòng 3 — Sai chuẩn ghi giá trị charset — Giá trị đúng của bảng mã phải có dấu gạch ngang. Sửa charset="utf8" thành charset="utf-8".
+Lỗi 5: Dòng 4 — Sai cú pháp thẻ đóng <h1> — Bạn đang dùng hai thẻ mở <h1>...<h1>. Sửa thẻ thứ hai thành thẻ đóng </h1>.
+Lỗi 6: Dòng 4 & 6 — Lỗi cấu trúc Semantic (H1 nằm ngoài Header) — Tiêu đề chính của trang nên nằm trong phần <header>. Hãy di chuyển dòng <h1>Welcome to ShopTLU</h1> vào bên trong cặp thẻ <header>.
+Lỗi 7: Dòng 8 — Sai cú pháp thẻ đóng <a> — Bạn dùng sai thẻ đóng <a>...<a>. Sửa phần tử thứ hai thành </a>.
+Lỗi 8: Dòng 16 — Thiếu thuộc tính alt cho hình ảnh (Lỗi Semantic/Accessibility) — Thẻ <img> bắt buộc phải có thuộc tính alt (văn bản thay thế) và giá trị nên để trong ngoặc kép. Sửa <img src=iphone.jpg> thành <img src="iphone.jpg" alt="Điện thoại iPhone 16 Pro">.
+Lỗi 9: Dòng 18 — Lỗi lồng chéo thẻ sai quy tắc (Nesting Error) — Thẻ <b> mở bên trong thẻ <p>, nhưng lại đóng ở bên ngoài. Ngoài ra, dùng thẻ <strong> sẽ mang tính ngữ nghĩa tốt hơn thẻ <b>. Sửa <p>Giá: <b>25.990.000đ</p></b> thành <p>Giá: <strong>25.990.000đ</strong></p>.
+Lỗi 10: Dòng 24, 25, 26 — Dùng sai thẻ cho phần Tiêu đề Bảng (Semantic) — Dòng tiêu đề của bảng phải dùng thẻ <th> (Table Heading) thay vì <td> (Table Data). Sửa <td>Tên</td> thành <th>Tên</th> (Đồng thời nên bọc dòng này trong thẻ <thead> cho chuẩn cấu trúc).
+Lỗi 11: Dòng 36 — Lạm dụng thẻ <main> (Lỗi Semantic nghiêm trọng) — Theo chuẩn HTML5, mỗi trang web chỉ được phép có duy nhất MỘT thẻ <main> hiển thị nội dung chính. Khối này chứa nội dung của thanh bên (Sidebar), nên thay vì dùng <main>, hãy đổi thành thẻ <aside>.
+Lỗi 12: Dòng 41 — Thiếu thẻ đóng văn bản </p> — Sửa <p>Copyright 2026 thành <p>Copyright 2026</p>.
+
 
 
 
