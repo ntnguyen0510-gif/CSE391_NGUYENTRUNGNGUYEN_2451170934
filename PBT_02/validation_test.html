@@ -1,0 +1,20 @@
+<!-- Trường hợp 1 -->
+<input type="text" required value="">   <!-- User để trống -->
+Thuộc tính required thông báo cho trình duyệt rằng trường này bắt buộc phải có dữ liệu. 
+Vì value="" (rỗng), trình duyệt sẽ kích hoạt trạng thái :invalid và hiển thị thông báo nhắc nhở người dùng.
+<!-- Trường hợp 2 -->
+<input type="email" value="abc">        <!-- User gõ "abc" -->
+Trình duyệt sử dụng một biểu thức chính quy (Regex) nội bộ để kiểm tra cấu trúc email.
+Chuỗi "abc" thiếu ký tự @ và tên miền, nên nó không thỏa mãn định dạng email tiêu chuẩn.
+<!-- Trường hợp 3 -->
+<input type="number" min="1" max="10" value="15"> <!-- User gõ 15 -->
+Thuộc tính max="10" thiết lập giới hạn trên cho giá trị đầu vào. 
+Khi người dùng nhập "15", giá trị này nằm ngoài phạm vi cho phép, gây ra lỗi Range Overflow.
+<!-- Trường hợp 4 -->
+<input type="text" pattern="[0-9]{10}" value="abc123"> <!-- User gõ "abc123" -->
+Thuộc tính pattern nhận một Regex. Ở đây [0-9]{10} yêu cầu chuỗi phải gồm đúng 10 chữ số. 
+Giá trị "abc123" sai cả về loại ký tự (chứa chữ cái) và độ dài (chỉ có 6 ký tự).
+<!-- Trường hợp 5 -->
+<input type="password" minlength="8" value="123">  <!-- User gõ "123" -->
+Thuộc tính minlength="8" yêu cầu số lượng ký tự tối thiểu là 8. 
+Với giá trị "123", chuỗi quá ngắn so với quy định, trình duyệt sẽ thông báo lỗi Too Short.
