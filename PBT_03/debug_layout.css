@@ -1,0 +1,31 @@
+.container {
+    width: 960px;
+    margin: 20px auto;
+    background-color: #eee;
+    border: 2px solid #333;
+}
+
+.sidebar {
+    background-color: #3498db;
+    padding: 20px;
+    border: 1px solid #000;
+    float: left;
+}
+
+.content {
+    background-color: #2ecc71;
+    padding: 30px;
+    border: 1px solid #000;
+    float: left;
+}
+
+.fix-1 .sidebar, .fix-1 .content {
+    box-sizing: border-box;
+}
+.fix-1 .sidebar { width: 300px; }
+.fix-1 .content { width: 660px; }
+
+.fix-2 .sidebar { width: 258px; }
+.fix-2 .content { width: 598px; }
+
+.clearfix { clear: both; }

@@ -117,3 +117,48 @@ Tại sao? Vì selector #demo.text có điểm specificity cao nhất (1, 1, 0).
 -Thay đổi thứ tự Rules
 Kết quả có đổi không? KHÔNG.
 Giải thích: Specificity là quy tắc ưu tiên dựa trên "trọng lượng" của bộ chọn. Trình duyệt chỉ xét đến thứ tự viết trước/sau (quy tắc Cascade) khi hai bộ chọn có điểm specificity bằng nhau. Ví dụ: Nếu bạn đổi chỗ .text và [class~="highlight"] (cùng điểm 0,1,0), màu sắc sẽ thay đổi. Nhưng với các bộ chọn khác điểm nhau, bộ chọn điểm cao hơn luôn thắng dù nằm ở bất kỳ đâu trong file.
+
+
+Phần C:
+Câu C1:
+1. Tính toán chiều rộng thực tế (content-box)
+Mặc định, trình duyệt sử dụng chế độ box-sizing: content-box. Với chế độ này, width chỉ tính cho phần nội dung, bạn phải cộng thêm padding và border để ra tổng chiều rộng mà phần tử chiếm dụng trên màn hình.
+Sidebar: 300px (width) + 20px (padding trái) + 20px (padding phải) + 1px (border trái) + 1px (border phải) = 342px.
+Content: 660px (width) + 30px (padding trái) + 30px (padding phải) + 1px (border trái) + 1px (border phải) = 722px.
+2. Giải thích tại sao layout bị vỡ
+Tổng chiều rộng thực tế của cả hai khối là:
+342px (Sidebar) + 722px (Content) = 1064px.
+Trong khi đó, thẻ cha .container chỉ rộng 960px. Vì tổng kích thước của hai khối con (1064px) lớn hơn kích thước thẻ cha (960px), nên không đủ chỗ để chúng nằm cùng một hàng. Do đó, phần tử content bị đẩy xuống dòng dưới.
+3. Hai cách sửa lỗi
+Cách 1: Sử dụng box-sizing: border-box (Khuyên dùng)
+Cách này giúp thuộc tính width bao gồm luôn cả padding và border, bạn không cần làm toán trừ phức tạp.
+Sidebar: width: 300px;
+Content: width: 660px;
+(Tổng 960px vừa khít container).
+Cách 2: Tính toán thủ công (Giữ nguyên content-box)
+Phải trừ đi phần padding và border khỏi giá trị width ban đầu.
+Sidebar mới: 300px - 40px (padding) - 2px (border) = 258px.
+Content mới: 660px - 60px (padding) - 2px (border) = 598px.
+
+Câu C2:
+1. "Sản phẩm A" (h2)
+Font-size: 20px
+Quá trình: Trình duyệt tìm thấy quy tắc .card .title có độ ưu tiên (Specificity) là (0, 2, 0). Điểm này cao hơn các giá trị kế thừa từ .container (0, 1, 0) hay body (0, 0, 1). Do đó, kích thước 20px được áp dụng.
+Color: green
+Quá trình: Có một cuộc tranh chấp giữa #featured .title (điểm cực cao: 1, 1, 0) và .highlight (điểm thấp hơn: 0, 1, 0). Tuy nhiên, quy tắc .highlight có gắn từ khóa !important. Trong CSS Cascade, !important là cấp độ ưu tiên cao nhất, ghi đè lên tất cả các thang đo điểm số thông thường. Vì vậy, màu xanh lá cây thắng.
+2. "Mô tả sản phẩm" (p nằm trong card featured)
+Color: blue
+Quá trình: Thẻ p này không được gán màu trực tiếp bởi bất kỳ Selector nào, nhưng nó có quy tắc .card p { color: inherit; }.
+Giải thích: Thuộc tính inherit bắt buộc phần tử phải lấy giá trị từ thẻ cha trực tiếp của nó. Thẻ cha ở đây là <div class="card" id="featured">. Thẻ này nhận màu blue từ quy tắc .card { color: blue; }. Kết quả là đoạn văn thừa hưởng màu xanh dương.
+3. "Sản phẩm B" (h2)
+Font-size: 20px
+Quá trình: Tương tự như sản phẩm A, thẻ h2 này khớp với Selector .card .title. Vì điểm Specificity (0, 2, 0) của quy tắc này mạnh hơn các giá trị bao quanh, nó áp dụng mức 20px.
+Color: blue
+Quá trình: Thẻ h2 này không có class .highlight và cũng không nằm trong ID #featured. Do đó, nó không có quy tắc màu trực tiếp nào. Theo cơ chế kế thừa mặc định của các thuộc tính văn bản, nó lấy màu từ thẻ cha gần nhất là .card. Vì .card có màu blue, nên tiêu đề này cũng hiện màu xanh dương.
+4. "Mô tả sản phẩm B" (p.highlight)
+Color: green
+Quá trình: Ở đây có sự tranh chấp giữa:
+Tính kế thừa từ thẻ cha .card (màu blue).
+Quy tắc .card p { color: inherit; } (cũng trỏ về màu blue).
+Quy tắc .highlight { color: green !important; } (nhắm trực tiếp vào chính nó).
+Giải thích: Quy tắc nhắm trực tiếp vào phần tử (.highlight) luôn thắng các quy tắc kế thừa. Hơn nữa, sự hiện diện của !important đảm bảo màu xanh lá cây sẽ ghi đè mọi thứ khác.

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm chứng Cascade Puzzle</title>
+    <style>
+        body { font-size: 16px; color: #333; margin: 20px; }
+        .container { font-size: 14px; }
+        .card { color: blue; border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; }
+        .card { border-radius: 8px; }
+        .card .title { font-size: 20px; }
+        .card p { color: inherit; }
+        #featured .title { color: red; }
+        .highlight { color: green !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="featured">
+            <h2 class="title highlight">Sản phẩm A</h2>
+            <p>Mô tả sản phẩm (Thừa hưởng blue từ .card)</p>
+        </div>
+        <div class="card">
+            <h2 class="title">Sản phẩm B (Thừa hưởng blue từ .card)</h2>
+            <p class="highlight">Mô tả sản phẩm B (Thắng nhờ !important)</p>
+        </div>
+    </div>
+</body>
+</html>
