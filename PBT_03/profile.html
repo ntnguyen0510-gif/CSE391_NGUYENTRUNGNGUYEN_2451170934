@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Trung Nguyên - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; 
+            color: #333;
+            padding: 10px;
+        }
+
+        header, main, aside, footer {
+            background-color: white;
+            border: 1px solid #aaa; 
+            padding: 15px;
+            margin-bottom: 20px; 
+        }
+
+        nav {
+            background-color: #e0e0e0;
+            padding: 10px;
+        }
+        
+        nav a {
+            margin-right: 20px; 
+            text-decoration: none; /* Bỏ gạch chân */
+            color: blue;
+            font-weight: bold;
+        }
+ 
+        figure {
+            border: 2px dashed #999; 
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        
+        img {
+            width: 100%; 
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse; 
+        }
+        
+        th, td {
+            padding: 8px;
+        }
+        
+        thead {
+            background-color: #ddd; 
+        }
+
+        footer {
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <header>
+            <h1>Xin chào, tôi là Nguyễn Trung Nguyên</h1>
+            <nav>
+                <a href="#toi">Về tôi</a>
+                <a href="#ky-nang">Kỹ năng</a>
+                <a href="#lien-he">Liên hệ</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="toi">
+                <h2>1. Về tôi</h2>
+                <article>
+                    <p>Chào thầy cô và các bạn. Tôi là Nguyễn Trung Nguyên, một "gà mờ" chính hiệu đang chập chững bước vào con đường lập trình web. Tuy giao diện chưa được đẹp lung linh, nhưng code HTML của tôi rất chuẩn cấu trúc!</p>
+                    
+                    <figure>
+                        <img src="anh-cua-toi.jpg" alt="Ảnh đại diện của Trung Nguyên">
+                        <figcaption>Ảnh chân dung của Nguyên</figcaption>
+                    </figure>
+                </article>
+            </section>
+
+            <hr> <section id="ky-nang">
+                <h2>2. Kỹ năng của tôi</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kỹ năng</th>
+                            <th>Mức độ</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>HTML5</td>
+                            <td>⭐⭐</td>
+                            <td>Thuộc hết các thẻ Semantic</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>⭐</td>
+                            <td>Mới biết tô màu và kẻ viền</td>
+                        </tr>
+                        <tr>
+                            <td>WinForms</td>
+                            <td>⭐⭐⭐</td>
+                            <td>Biết kéo thả giao diện cơ bản</td>
+                        </tr>
+                        <tr>
+                            <td>Ngủ nướng</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>Kỹ năng sinh tồn</td>
+                        </tr>
+                        <tr>
+                            <td>Chơi Game</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>Gánh team là chuyện nhỏ</td>
+                        </tr>
+                    </tbody>
+                    
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Trạng thái:</td>
+                            <td>Đang nỗ lực học tập từng ngày!</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </main>
+
+        <aside id="lien-he">
+            <h2>Thông tin liên hệ</h2>
+            <p>Họ và tên: Nguyễn Trung Nguyên</p>
+            <p>Sở thích: Code dạo, đi chơi và ăn uống.</p>
+        </aside>
+
+        <footer>
+            <p>© 2026 Nguyễn Trung Nguyên</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

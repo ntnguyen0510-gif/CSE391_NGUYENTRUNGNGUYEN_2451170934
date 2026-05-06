@@ -100,3 +100,20 @@ Kết quả: Element sẽ có màu đen (Black).
 Giải thích:
 !important không phải là một selector, nhưng nó là một "lệnh cưỡng ép" ghi đè mọi quy tắc Specificity thông thường.
 Khi có !important, trình duyệt sẽ bỏ qua điểm số (a, b, c) và áp dụng ngay giá trị đó. Ngay cả Inline Style cũng sẽ bị đánh bại bởi một Rule trong file CSS có gắn !important (trừ khi chính Inline Style đó cũng có !important).
+
+Câu B1:
+Trong file style.css, có 5 loại Selector sau:
+Universal Selector (*): Dùng để reset box-sizing cho toàn bộ trang.
+Element Selector (body, header, table): Định dạng trực tiếp các thẻ HTML cơ bản.
+Class Selector (.active): Dùng để làm nổi bật liên kết của trang hiện hành.
+ID Selector (#toi, #lien-he): Định dạng cụ thể cho các khối nội dung độc nhất.
+Pseudo-class Selector (:hover, :nth-child(even)): Tạo hiệu ứng tương tác cho bảng và menu điều hướng.
+
+Câu B3:
+Kết quả hiển thị:
+Màu cuối cùng: Màu tím (Purple).
+Tại sao? Vì selector #demo.text có điểm specificity cao nhất (1, 1, 0). Trong CSS, điểm ở cột ID (a) quan trọng hơn cột Class (b), và cột Class quan trọng hơn cột Element (c). Do có 1 ID và 1 Class nên nó đánh bại tất cả các rules còn lại.
+
+-Thay đổi thứ tự Rules
+Kết quả có đổi không? KHÔNG.
+Giải thích: Specificity là quy tắc ưu tiên dựa trên "trọng lượng" của bộ chọn. Trình duyệt chỉ xét đến thứ tự viết trước/sau (quy tắc Cascade) khi hai bộ chọn có điểm specificity bằng nhau. Ví dụ: Nếu bạn đổi chỗ .text và [class~="highlight"] (cùng điểm 0,1,0), màu sắc sẽ thay đổi. Nhưng với các bộ chọn khác điểm nhau, bộ chọn điểm cao hơn luôn thắng dù nằm ở bất kỳ đâu trong file.

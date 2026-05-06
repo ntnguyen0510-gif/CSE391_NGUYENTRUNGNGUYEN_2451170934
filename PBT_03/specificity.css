@@ -1,0 +1,10 @@
+* { color: gray; }
+p { color: silver; }
+.text { color: blue; }
+[class~="highlight"] { color: cyan; }
+.text.highlight { color: pink; }
+p.text { color: brown; } 
+p.text.highlight { color: orange; }
+#demo { color: red; }
+p#demo { color: green; }
+#demo.text { color: purple; }
