@@ -131,3 +131,11 @@ Dùng khi hình ảnh là một đơn vị nội dung độc lập (self-contain
 <figcaption>: Cung cấp chú thích rõ ràng, giúp người dùng (và Google) hiểu rõ ngữ cảnh của ảnh đó.
 Ví dụ 1 (Danh sách sản phẩm): Trong trang chi tiết sản phẩm, một bức ảnh chụp cận cảnh các cổng kết nối của iPhone kèm chú thích: "Cổng USB-C mới hỗ trợ tốc độ truyền dữ liệu nhanh hơn".
 Ví dụ 2 (Minh họa trong Blog): Trong bài viết "Đánh giá camera iPhone 16", bạn đăng một tấm ảnh chụp đêm và dùng <figcaption> để ghi: "Ảnh chụp chế độ Ban đêm (Night Mode) với thời gian phơi sáng 3 giây".
+
+Câu B1:
+Tại sao HTML không thể tự động validate "Confirm Password"?
+Dù HTML5 rất mạnh mẽ nhưng nó có một giới hạn logic: Mỗi input chỉ tự kiểm tra được chính nó (Self-validation) dựa trên các thuộc tính nội tại (như pattern, minlength).
+Thiếu tính liên kết: HTML5 không có thuộc tính tích hợp sẵn để "so sánh" giá trị của input A với input B.
+Logic phụ thuộc: Việc kiểm tra khớp mật khẩu yêu cầu logic "Nếu A khác B thì báo lỗi". Đây là logic so sánh giữa hai ô dữ liệu khác nhau, điều mà bộ máy validation tĩnh của trình duyệt chưa hỗ trợ.
+Giải pháp: Để thực hiện việc này, chúng ta bắt buộc phải dùng JavaScript để lắng nghe sự kiện input hoặc submit, sau đó dùng hàm setCustomValidity() để thông báo lỗi nếu hai giá trị không khớp nhau.
+

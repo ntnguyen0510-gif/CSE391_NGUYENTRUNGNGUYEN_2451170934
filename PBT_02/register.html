@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký tài khoản E-Commerce</title>
+</head>
+<body>
+
+    <h1>Đăng ký tài khoản</h1>
+
+    <form action="#" method="POST">
+
+        <!-- Fieldset 1: Thông tin cá nhân -->
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            
+            <p>
+                <label for="fullname">Họ tên:</label><br>
+                <input type="text" id="fullname" name="fullname" 
+                       required minlength="2" maxlength="50" 
+                       placeholder="Nhập họ và tên (VD: Nguyễn Văn A)">
+            </p>
+
+            <p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" 
+                       required placeholder="vi-du@email.com">
+            </p>
+
+            <p>
+                <label for="phone">Số điện thoại:</label><br>
+                <input type="tel" id="phone" name="phone" 
+                       pattern="[0-9]{10}" 
+                       placeholder="Nhập 10 chữ số">
+            </p>
+
+            <p>
+                <label for="dob">Ngày sinh:</label><br>
+                <input type="date" id="dob" name="dob" 
+                       max="2026-05-06" 
+                       placeholder="Chọn ngày sinh">
+            </p>
+
+            <p>
+                <span>Giới tính:</span><br>
+                <input type="radio" id="male" name="gender" value="nam">
+                <label for="male">Nam</label>
+                
+                <input type="radio" id="female" name="gender" value="nu">
+                <label for="female">Nữ</label>
+                
+                <input type="radio" id="other" name="gender" value="khac">
+                <label for="other">Khác</label>
+            </p>
+        </fieldset>
+
+        <!-- Fieldset 2: Tài khoản -->
+        <fieldset>
+            <legend>Tài khoản</legend>
+
+            <p>
+                <label for="username">Tên đăng nhập:</label><br>
+                <input type="text" id="username" name="username" 
+                       required pattern="^[a-zA-Z0-9_]{3,20}$" 
+                       placeholder="Chữ, số, hoặc dấu gạch dưới (3-20 ký tự)">
+            </p>
+
+            <p>
+                <label for="password">Mật khẩu:</label><br>
+                <input type="password" id="password" name="password" 
+                       required minlength="8" 
+                       pattern="(?=.*\d)(?=.*[A-Z]).{8,}"
+                       title="Mật khẩu phải ít nhất 8 ký tự, bao gồm ít nhất 1 chữ hoa và 1 chữ số"
+                       placeholder="Ít nhất 8 ký tự, 1 chữ hoa, 1 số">
+            </p>
+
+            <p>
+                <label for="confirm_password">Xác nhận mật khẩu:</label><br>
+                <input type="password" id="confirm_password" name="confirm_password" 
+                       required minlength="8"
+                       placeholder="Nhập lại mật khẩu giống hệt bên trên">
+            </p>
+        </fieldset>
+
+        <!-- Fieldset 3: Thông tin giao hàng -->
+        <fieldset>
+            <legend>Thông tin giao hàng</legend>
+
+            <p>
+                <label for="city">Thành phố:</label><br>
+                <select id="city" name="city" required>
+                    <option value="">-- Chọn Thành phố --</option>
+                    <option value="hanoi">Hà Nội</option>
+                    <option value="hcm">TP. Hồ Chí Minh</option>
+                    <option value="danang">Đà Nẵng</option>
+                    <option value="cantho">Cần Thơ</option>
+                    <option value="haiphong">Hải Phòng</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="district">Quận/Huyện:</label><br>
+                <select id="district" name="district">
+                    <option value="">-- Chọn Quận/Huyện --</option>
+                    <option value="q1">Quận 1</option>
+                    <option value="q2">Quận 2</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="address">Địa chỉ chi tiết:</label><br>
+                <textarea id="address" name="address" rows="3" 
+                          placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+            </p>
+        </fieldset>
+
+        <!-- Điều khoản & Nút bấm -->
+        <p>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">Tôi đồng ý với điều khoản dịch vụ</label>
+        </p>
+
+        <button type="submit">Đăng ký ngay</button>
+        <button type="reset">Xóa làm lại</button>
+
+    </form>
+
+</body>
+</html>
