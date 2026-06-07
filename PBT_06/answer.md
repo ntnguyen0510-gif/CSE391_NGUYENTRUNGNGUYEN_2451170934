@@ -288,3 +288,73 @@ Giải thích cơ chế vận hành:
 hidden → display: none; (Mặc định ẩn hoàn toàn phần tử này trên màn hình Mobile dưới 768px).
 
 md:flex → display: flex; (Ngay khi màn hình đạt kích thước từ mốc Medium - 768px trở lên, trình duyệt sẽ kích hoạt thuộc tính hiển thị dạng Flexbox và ghi đè lên trạng thái ẩn trước đó).
+
+Phần C:
+Câu C1:
+I. ĐỐI CHIẾU CẤU TRÚC CODE (PRODUCT CARD COMPONENT)
+Để có cái nhìn khách quan, hãy xem lại cách viết của cùng một component bằng 2 phương pháp:
+
+1. Phiên bản CSS thuần
+HTML:
+
+HTML
+<div class="custom-card">
+    <div class="card-badge">Sale</div>
+    <img src="avatar.jpg" class="card-img" alt="Product">
+    <div class="card-body">
+        <h3 class="card-title">Tên sản phẩm</h3>
+        <p class="card-desc">Mô tả ngắn gọn về sản phẩm.</p>
+        <div class="card-price">28.990.000 đ</div>
+    </div>
+</div>
+CSS: Tốn khoảng 15 - 20 dòng CSS riêng biệt (quy định width, background, border-radius, box-shadow, position: absolute cho badge, object-fit: cover cho ảnh, v.v.).
+
+2. Phiên bản TailwindCSS
+HTML (Không cần file CSS đi kèm):
+
+HTML
+<div class="relative max-w-[280px] w-full bg-white rounded-lg shadow-md overflow-hidden m-5">
+    <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Sale</div>
+    <img src="avatar.jpg" class="w-full h-[200px] object-cover" alt="Product">
+    <div class="p-4">
+        <h3 class="text-lg text-slate-800 mb-2">Tên sản phẩm</h3>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Mô tả ngắn gọn về sản phẩm.</p>
+        <div class="text-red-500 font-bold text-lg">28.990.000 đ</div>
+    </div>
+</div>
+II. PHÂN TÍCH VÀ SO SÁNH CHI TIẾT
+1. Dung lượng file HTML (HTML file size)
+CSS thuần: Dung lượng file HTML nhỏ hơn. Thẻ HTML rất sạch sẽ vì class chỉ chứa các cái tên ngắn gọn (ví dụ: class="custom-card"). Toàn bộ sức nặng dung lượng được đẩy sang file .css bên ngoài.
+
+TailwindCSS: Dung lượng file HTML lớn hơn rõ rệt (Bị phình to). Vì Tailwind ép ta viết hàng chục class tiện ích trực tiếp vào thuộc tính của thẻ (ví dụ: class="relative max-w-[280px] w-full bg-white rounded-lg shadow-md...").
+
+Góc nhìn tối ưu hóa: Mặc dù file HTML của Tailwind nặng hơn, nhưng tổng dung lượng tải trang (HTML + CSS) của toàn bộ dự án lớn khi dùng Tailwind lại nhỏ hơn nhiều so với CSS thuần. Lý do là vì file CSS của Tailwind được gom tụ (minify) cố định và không bị phình to theo số lượng component tăng lên như CSS thuần.
+
+2. Khả năng bảo trì (Maintainability - Dễ đọc? Dễ sửa?)
+CSS thuần:
+
+Dễ đọc ban đầu: HTML trông rất gọn gàng, có tính ngữ nghĩa cao.
+
+Cực khó sửa về sau (Context-switching): Mỗi lần muốn chỉnh sửa giao diện, bạn phải liên tục nhảy qua nhảy lại giữa file HTML và file CSS. Khi dự án lớn lên, file CSS dài hàng ngàn dòng sẽ dẫn đến hiện tượng "Sợ xóa code" (Dead CSS) vì không biết class này có đang được dùng ở trang khác hay không. Sửa một chỗ rất dễ làm vỡ giao diện ở trang khác.
+
+TailwindCSS:
+
+Khó đọc ban đầu (Trông rối mắt): Chuỗi class dài dằng dặc trong HTML khiến code bị rối, khó nhìn ra cấu trúc phân cấp của các thẻ nếu chưa quen mắt.
+
+Cực kỳ dễ sửa về sau: Vì CSS nằm ngay tại thẻ HTML (Co-location), bạn muốn sửa gì chỉ cần nhìn đúng vào thẻ đó và thay đổi class (ví dụ: đổi từ bg-white sang bg-gray-100). Bạn hoàn toàn tự tin chỉnh sửa mà không bao giờ sợ làm ảnh hưởng đến các component khác trên hệ thống.
+
+3. Khả năng tái sử dụng (Reusability)
+CSS thuần: Tái sử dụng bằng cách copy-paste đoạn class HTML (<div class="custom-card">) sang vị trí mới. Thừa hưởng sức mạnh của tính bao đóng toàn cục trong file CSS gốc.
+
+TailwindCSS: Do chuỗi class quá dài, nếu cứ copy-paste thủ công sẽ làm rác mã nguồn và rất khó sửa đồng bộ. Do đó, Tailwind giải quyết bài toán tái sử dụng theo 2 hướng:
+
+Cách 1: Component-Driven (Khuyên dùng nhất): Nếu bạn dùng các framework như React, Vue, Next.js, hoặc Blade Template, bạn sẽ gom toàn bộ đống class Tailwind đó vào một Component duy nhất (ví dụ: <ProductCard />). Khi cần dùng lại, bạn chỉ gọi tên Component. Cách này giúp giữ nguyên triết lý Utility-First của Tailwind.
+
+Cách 2: Sử dụng Chỉ thị @apply (Tái sử dụng ở tầng CSS): Nếu bạn viết HTML/CSS truyền thống và không muốn chuỗi class làm bẩn HTML, Tailwind cung cấp tính năng @apply để gom các class tiện ích lại thành một class CSS tùy chỉnh trong file style:
+
+CSS
+/* Viết trong file CSS của dự án */
+.custom-card-tailwind {
+    @apply relative max-w-[280px] w-full bg-white rounded-lg shadow-md overflow-hidden;
+}
+Lưu ý: Mặc dù @apply giúp HTML sạch như CSS thuần, nhưng các nhà phát triển Tailwind khuyến cáo không nên lạm dụng nó, vì nó sẽ làm mất đi lợi thế lớn nhất của Tailwind là sửa code không cần rời file HTML và làm tăng dung lượng file CSS được tạo ra.
