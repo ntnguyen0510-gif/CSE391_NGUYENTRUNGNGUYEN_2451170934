@@ -249,3 +249,42 @@ focus:ring-2 → Khi click chuột hoặc tab tiêu điểm vào nút (:focus), 
 
 focus:ring-blue-300 → Chỉ định màu sắc cho vòng hào quang khi focus là màu xanh dịu nhẹ  --tw-ring-color: rgb(147 197 253);.
 
+Câu A2:
+1. Giải thích prefix responsive: md:, lg:, xl:
+Trong TailwindCSS, các tiền tố (prefix) responsive hoạt động theo nguyên lý Mobile-First (mặc định áp dụng cho màn hình nhỏ nhất, sau đó viết thêm tiền tố để cấu hình cho các màn hình lớn hơn). Các tiền tố này tương đương với các đoạn @media (min-width: ...) trong CSS thuần.
+md: (Medium) → Áp dụng cho màn hình có độ rộng từ 768px trở lên (Máy tính bảng).
+lg: (Large) → Áp dụng cho màn hình có độ rộng từ 1024px trở lên (Laptop/Desktop nhỏ).
+xl: (Extra Large) → Áp dụng cho màn hình có độ rộng từ 1280px trở lên (Màn hình Desktop lớn).
+Ví dụ cụ thể: md:grid-cols-2 lg:grid-cols-4 nghĩa là gì?
+Đoạn mã này dùng để cấu hình số cột của lưới (Grid Layout) theo từng kích thước màn hình:
+-Trên màn hình di động (mặc định, < 768px): Nếu trước đó không khai báo gì, hệ thống sẽ nhận số cột mặc định (thường là 1 cột).
+-Kể từ màn hình Tablet trở lên (>= 768px): Tiền tố md: được kích hoạt, biến lưới thành 2 cột (grid-template-columns: repeat(2, minmax(0, 1fr));).
+-Kể từ màn hình Desktop trở lên (>= 1024px): Tiền tố lg: được kích hoạt và ghi đè lên md:, biến lưới thành 4 cột (grid-template-columns: repeat(4, minmax(0, 1fr));).
+2. Giải thích state modifiers: hover:, focus:, active:, group-hover:
+State modifiers là các tiền tố dùng để áp dụng class CSS khi phần tử rơi vào một trạng thái tương tác cụ thể của người dùng (tương đương với các Pseudo-classes trong CSS thuần).
+
+hover: (Di chuột) → Áp dụng thuộc tính CSS khi người dùng rê con trỏ chuột qua phần tử.
+
+Ví dụ: hover:bg-blue-600 (Đổi nền sang xanh đậm khi di chuột vào).
+
+focus: (Tiêu điểm) → Áp dụng thuộc tính khi phần tử được chọn hoặc nhắm vào (như khi click chuột vào ô Input, hoặc dùng phím Tab trên bàn phím để chuyển đến nút bấm).
+
+Ví dụ: focus:border-blue-500 (Đổi màu viền ô nhập liệu khi người dùng đang gõ chữ).
+
+active: (Kích hoạt/Nhấn giữ) → Áp dụng thuộc tính tại khoảnh khắc người dùng nhấn giữ chuột trái vào phần tử nhưng chưa thả tay ra.
+
+Ví dụ: active:scale-95 (Tạo hiệu ứng nút bấm bị lún xuống khi nhấn vào).
+
+group-hover: (Rê chuột theo nhóm) → Đây là một tính năng cực mạnh của Tailwind. Khi bạn đặt class group ở thẻ cha, bất kỳ thẻ con nào bên trong có class group-hover: sẽ tự động thay đổi CSS khi người dùng rê chuột vào bất cứ đâu thuộc thẻ cha (thay vì phải rê chính xác vào thẻ con).
+
+Ví dụ: Rê chuột vào một chiếc Card sản phẩm (group) làm tiêu đề chữ bên trong (group-hover:text-blue-500) tự động đổi sang màu xanh.
+3. Viết class Tailwind cho yêu cầu: "Ẩn trên mobile, hiện dạng flex trên tablet trở lên"
+Để thực hiện yêu cầu này (tương đương với bộ đôi d-none d-md-flex quen thuộc của Bootstrap), bạn viết chuỗi class Tailwind sau:
+
+HTML
+class="hidden md:flex"
+Giải thích cơ chế vận hành:
+
+hidden → display: none; (Mặc định ẩn hoàn toàn phần tử này trên màn hình Mobile dưới 768px).
+
+md:flex → display: flex; (Ngay khi màn hình đạt kích thước từ mốc Medium - 768px trở lên, trình duyệt sẽ kích hoạt thuộc tính hiển thị dạng Flexbox và ghi đè lên trạng thái ẩn trước đó).
