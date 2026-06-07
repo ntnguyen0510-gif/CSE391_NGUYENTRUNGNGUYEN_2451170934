@@ -84,3 +84,52 @@ Tối ưu hóa hiệu năng và tốc độ tải trang trên di động: Thiế
 Tập trung vào nội dung cốt lõi (Content Strategy): Thiết kế trên không gian màn hình nhỏ buộc lập trình viên và nhà thiết kế phải giữ lại những gì quan trọng nhất, lược bỏ các thành phần rác rưởi, rườm rà. Khi mở rộng lên Desktop, trang web sẽ có bố cục thoáng đãng và mạch lạc hơn.
 
 Tốt cho SEO (Điểm xếp hạng Google): Từ lâu Google đã áp dụng thuật toán Mobile-First Indexing. Nghĩa là Google sẽ dùng giao diện di động của trang web để thu thập dữ liệu và tính điểm xếp hạng tìm kiếm. Một trang web tối ưu Mobile-First tốt sẽ có lợi thế vượt trội về thứ hạng trên Google Search.
+
+Câu A2:
+1. Bảng Breakpoints chuẩn theo Bootstrap 5
+Breakpoint          Kích thước Pixel        Thiết bị đại diện                   Số cột hiển thị cho lưới sản phẩm (Gợi ý chuẩn UI/UX)
+X-Small (<576px)    Dưới 576px              Điện thoại di động dọc              1 cột hoặc 2 cột nhỏ
+Small (sm)          Từ 576px trở lên        máy tính bảng cỡ rất nhỏ            2 cột
+Medium (md)         Từ 768px trở lên        Máy tính bảng hướng dọc             2 cột hoặc 3 cột
+Large (lg)          Từ 992px trở lên        Máy tính bảng hướng ngang           3 cột hoặc 4 cột
+                                            (iPad Pro 12.9")
+X-Large (xl)        Từ 1200px trở lên       Màn hình máy tính xách tay          4 cột
+                                            thông thường (MacBook 13"/14"/16")  4 cột, 5 cột hoặc 6 cột
+XX-Large (xxl)      Từ 1400px trở lên       Màn hình máy tính để bàn
+
+2. Ví dụ minh họa code thực tế áp dụng Breakpoints
+Dưới đây là cách bạn áp dụng các breakpoint trên vào mã nguồn CSS bằng phương pháp Mobile-First sử dụng CSS Grid để điều khiển số cột của lưới sản phẩm tự động theo đúng bảng quy chuẩn trên:CSS/* --- TRẠNG THÁI MẶC ĐỊNH (X-Small < 576px) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 cột trên điện thoại dọc */
+    gap: 15px;
+}
+
+/* --- BREAKPOINT 1: Small Devices (sm: >= 576px) --- */
+@media (min-width: 576px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Chuyển thành 2 cột trên điện thoại ngang */
+    }
+}
+
+/* --- BREAKPOINT 2: Medium Devices (md: >= 768px) --- */
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* Chuyển thành 3 cột trên iPad/Tablet dọc */
+    }
+}
+
+/* --- BREAKPOINT 3: Large / XL Devices (lg/xl: >= 992px) --- */
+@media (min-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr); /* Chuyển thành 4 cột ổn định trên Laptop/Desktop */
+    }
+}
+
+/* --- BREAKPOINT 4: XX-Large Devices (xxl: >= 1400px) --- */
+@media (min-width: 1400px) {
+    .product-grid {
+        grid-template-columns: repeat(6, 1fr); /* Chuyển hẳn thành 6 cột trên màn hình PC lớn để không bị trống trang */
+    }
+}
+Tại sao nên nhớ các mốc 576px, 768px, 992px, 1200px?Đây là các con số được đúc kết qua hàng chục năm phát triển web dựa trên thông số phần cứng thực tế của hàng nghìn dòng thiết bị của Apple, Samsung, Dell, LG... Việc tuân thủ theo các breakpoint tiêu chuẩn này giúp giao diện của bạn không bao giờ bị lỗi hiển thị hay tràn viền (horizontal scrollbar) khi người dùng đổi thiết bị truy cập.
