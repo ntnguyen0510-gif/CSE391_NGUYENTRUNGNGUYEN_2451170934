@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô Phỏng Trạng Thái Giao Diện Bị Lỗi</title>
+    <style>
+        /* --- RESET STYLE CƠ BẢN VÀ ĐỊNH DẠNG KHUNG ĐỂ QUAN SÁT --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: #f0f2f5; padding: 20px; color: #333; }
+        h1 { text-align: center; margin-bottom: 40px; color: #1a252f; }
+        .section-demo { background: white; padding: 20px; margin-bottom: 50px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        .section-title { border-bottom: 2px solid #e74c3c; padding-bottom: 10px; margin-bottom: 20px; font-size: 20px; }
+        .status-tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 15px; }
+        .status-error { background-color: #ffe0e0; color: #cc0000; }
+
+        /* ========================================================
+           LỖI 1: CARDS KHÔNG ĐỀU CHIỀU CAO (GIỮ NGUYÊN CODE LỖI CỦA BẠN)
+           ======================================================== */
+        .card-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+        }
+        .card { 
+            width: 30%; 
+            margin: 1.5%; 
+            /* Thêm viền và nền để bạn nhìn rõ phom dáng card bị lỗi */
+            background: #f8f9fa; 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            border-radius: 6px;
+        }
+        .card img { 
+            width: 100%; 
+            height: 120px; 
+            background: #cbd5e1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #64748b; 
+        }
+        .card h3 { 
+            font-size: 18px; 
+            margin: 10px 0;
+        }
+        .card p { 
+            font-size: 14px; 
+            color: #666; 
+            margin-bottom: 15px; 
+        }
+        .card .btn { 
+            padding: 10px; 
+            background: #3498db; 
+            color: white; 
+            border: none; 
+            width: 100%; 
+            cursor: pointer;
+            font-weight: bold;
+            /* Thiếu tính năng đẩy lề tự động khiến nút bị nhấp nhô */
+        }
+
+        /* ========================================================
+           LỖI 2: HERO SECTION KHÔNG CĂN GIỮA ĐƯỢC (GIỮ NGUYÊN CODE LỖI CỦA BẠN)
+           ======================================================== */
+        .hero {
+            height: 40vh; /* Thu nhỏ lại thành 40vh trong file test để dễ nhìn tổng thể */
+            background: #2c3e50;
+            color: white;
+            border-radius: 6px;
+            
+            display: flex;
+            /* Thiếu justify-content: center và align-items: center */
+        }
+        .hero-content {
+            text-align: center;
+            /* Chỉ căn giữa text nội bộ, không thể tự căn giữa cả khối so với cha */
+        }
+        .hero-content h2 { font-size: 28px; margin-bottom: 10px; color: #f1c40f; }
+
+        /* ========================================================
+           LỖI 3: SIDEBAR BỊ CO RÚM LẠI (GIỮ NGUYÊN CODE LỖI CỦA BẠN)
+           ======================================================== */
+        .layout { 
+            display: flex; 
+            background: #e2e8f0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .sidebar { 
+            width: 250px; 
+            background: #94a3b8; 
+            padding: 20px; 
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            /* Mặc định flex-shrink: 1 làm sidebar bị bóp nghẹt khi content bên cạnh quá dài */
+        }
+        .content { 
+            flex: 1; 
+            background: #ffffff; 
+            padding: 20px; 
+        }
+        /* Đối tượng có chuỗi ký tự kéo dài liên tục để tạo sức ép phá vỡ layout */
+        .long-object {
+            width: 100%;
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            white-space: nowrap; /* Ép text nằm trên một hàng để dồn lực bóp nghẹt Sidebar */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hệ Thống Mô Phỏng Giao Diện Bị Lỗi CSS</h1>
+
+    <div class="section-demo">
+        <div class="section-title">Tình huống 1: Hàng sản phẩm (Các nút "Mua" bị nhảy lên/xuống nhấp nhô)</div>
+        <span class="status-tag status-error">Trạng thái: Bị lỗi bố cục nút bấm</span>
+        
+        <div class="card-container">
+            <div class="card">
+                <div class="img">📷 Ảnh Sản Phẩm 1</div>
+                <h3>Sản phẩm A</h3>
+                <p>Mô tả ngắn.</p>
+                <button class="btn">Mua ngay</button>
+            </div>
+            
+            <div class="card">
+                <div class="img">📷 Ảnh Sản Phẩm 2</div>
+                <h3>Sản phẩm B Tên Siêu Dài Hàng Cao Cấp Nhập Khẩu</h3>
+                <p>Mô tả chi tiết rất dài dòng để đẩy diện tích card xuống sâu hơn bình thường.</p>
+                <button class="btn">Mua ngay</button>
+            </div>
+            
+            <div class="card">
+                <div class="img">📷 Ảnh Sản Phẩm 3</div>
+                <h3>Sản phẩm C</h3>
+                <p>Mô tả vừa vặn.</p>
+                <button class="btn">Mua ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-demo">
+        <div class="section-title">Tình huống 2: Căn giữa trong Hero Section (Bị dính ở góc trái trên)</div>
+        <span class="status-tag status-error">Trạng thái: Chưa căn giữa vào tâm khối xanh</span>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <h2>CHÀO MỪNG ĐẾN VỚI WEBSITE</h2>
+                <p>Khối nội dung này đang bị dính chặt ở góc trên bên trái, không xuống giữa được.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-demo">
+        <div class="section-title">Tình huống 3: Sidebar bị co cụm diện tích chiều rộng</div>
+        <span class="status-tag status-error">Trạng thái: Sidebar bị vỡ kích thước 250px</span>
+        
+        <div class="layout">
+            <div class="sidebar">
+                SIDEBAR<br>(Đã đặt 250px nhưng đang bị co rúm)
+            </div>
+            <div class="content">
+                <h3>Vùng nội dung chính (Content)</h3>
+                <p style="margin-bottom: 10px;">Chuỗi text không ngắt dòng dưới đây đang tạo lực ép ép Sidebar mất diện tích:</p>
+                
+                <div class="long-object">
+                    TEXT_QUÁ_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI_DÀI
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
