@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS E-Commerce Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Cấu hình Tailwind hỗ trợ cơ chế chuyển đổi Dark Mode dựa trên Class của thẻ <html>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
+
+    <button onclick="toggleDarkMode()" class="fixed bottom-6 right-6 z-50 p-3 bg-indigo-600 text-white rounded-full shadow-2xl hover:bg-indigo-700 active:scale-95 transition-all text-xl">
+        🌓 Toggle Mode
+    </button>
+
+
+    <nav class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm transition-colors dark:bg-slate-950 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-2xl font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                    🌀 WindShop
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8 font-medium">
+                    <a href="#" class="text-indigo-600 dark:text-indigo-400">Trang chủ</a>
+                    <a href="#" class="text-slate-600 hover:text-indigo-600 transition dark:text-slate-400 dark:hover:text-indigo-400">Sản phẩm</a>
+                    <a href="#" class="text-slate-600 hover:text-indigo-600 transition dark:text-slate-400 dark:hover:text-indigo-400">Ưu đãi</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <input type="text" placeholder="Tìm kiếm..." class="px-4 py-1.5 text-sm bg-slate-100 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-slate-800 dark:border-slate-700">
+                    <button class="relative p-2 text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400">
+                        🛒 <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-500 rounded-full">2</span>
+                    </button>
+                </div>
+
+                <div class="flex items-center md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-slate-600 dark:text-slate-300 focus:outline-none text-2xl">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 dark:bg-slate-950 dark:border-slate-800">
+            <a href="#" class="block px-3 py-2 rounded-md bg-slate-100 font-semibold text-indigo-600 dark:bg-slate-900 dark:text-indigo-400">Trang chủ</a>
+            <a href="#" class="block px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-900">Sản phẩm</a>
+            <a href="#" class="block px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-900">Ưu đãi</a>
+        </div>
+    </nav>
+
+
+    <header class="relative bg-slate-900 overflow-hidden py-24 md:py-32">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-100 h-100 object-cover opacity-20" alt="Hero Background">
+        
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 mb-4 border border-indigo-500/20">
+                XU HƯỚNG CÔNG NGHỆ 2026
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+                Kiến Tạo Không Gian <br class="hidden sm:inline"><span class="text-indigo-400">Làm Việc Tương Lai</span>
+            </h1>
+            <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+                Khám phá bộ sưu tập phụ kiện cao cấp, bàn phím cơ và thiết bị ngoại vi được thiết kế tối giản giúp tối ưu năng suất làm việc của bạn.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#products" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 text-white font-medium rounded-lg shadow-lg hover:bg-indigo-700 active:scale-98 transition transform">
+                    Mua sắm ngay
+                </a>
+                <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-slate-200 font-medium rounded-lg border border-slate-700 hover:bg-slate-700 transition">
+                    Tìm hiểu thêm
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight">Sản Phẩm Đang Hot</h2>
+                <p class="text-slate-500 mt-1 dark:text-slate-400">Cập nhật những mẫu thiết bị mới nhất tuần này</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="group bg-white rounded-lg border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-column overflow-hidden dark:bg-slate-950 dark:border-slate-800">
+                <div class="relative overflow-hidden bg-slate-100 aspect-video md:aspect-square">
+                    <span class="absolute top-3 left-3 z-10 px-2.5 py-1 text-xs font-bold text-white bg-red-500 rounded">GIẢM 20%</span>
+                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" alt="Product 1">
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-indigo-600 tracking-wider uppercase dark:text-indigo-400">Bàn phím cơ</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Keychron K2 Pro V2</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2 dark:text-slate-400">Bàn phím cơ không dây layout 75%, mạch xuôi hot-swap cao cấp.</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between dark:border-slate-800">
+                        <span class="text-xl font-black text-red-500">2.150.000 đ</span>
+                        <button class="p-2 bg-indigo-50 text-indigo-600 rounded-md hover:bg-indigo-600 hover:text-white transition dark:bg-slate-900 dark:text-indigo-400 dark:hover:bg-indigo-600 dark:hover:text-white">🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white rounded-lg border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-column overflow-hidden dark:bg-slate-950 dark:border-slate-800">
+                <div class="relative overflow-hidden bg-slate-100 aspect-video md:aspect-square">
+                    <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" alt="Product 2">
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-indigo-600 tracking-wider uppercase dark:text-indigo-400">Chuột máy tính</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Logitech MX Master 3S</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2 dark:text-slate-400">Chuột công thái học siêu yên tĩnh, cảm biến cuộn MagSpeed siêu tốc.</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between dark:border-slate-800">
+                        <span class="text-xl font-black text-slate-900 dark:text-slate-100">2.490.000 đ</span>
+                        <button class="p-2 bg-indigo-50 text-indigo-600 rounded-md hover:bg-indigo-600 hover:text-white transition dark:bg-slate-900 dark:text-indigo-400 dark:hover:bg-indigo-600 dark:hover:text-white">🛒</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white rounded-lg border border-slate-200 shadow-md hover:
