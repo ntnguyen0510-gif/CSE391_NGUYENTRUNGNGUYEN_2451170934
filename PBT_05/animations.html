@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng Animations và Transitions</title>
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+    <div class="loader-container">
+        <div class="loading-spinner"></div>
+        <p>Đang tải sản phẩm...</p>
+    </div>
+
+    <div class="main-container">
+        <h1 class="page-title">Sản Phẩm Khuyến Mãi</h1>
+
+        <div class="product-grid animate-fade-in">
+            
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Sản phẩm 1">
+                </div>
+                <div class="card-content">
+                    <h3>iPhone 15 Pro Max 256GB</h3>
+                    <p class="price">29.490.000 đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Sản phẩm 2">
+                </div>
+                <div class="card-content">
+                    <h3>MacBook Air M3 2024</h3>
+                    <p class="price">27.990.000 đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Sản phẩm 3">
+                </div>
+                <div class="card-content">
+                    <h3>Sony WH-1000XM5</h3>
+                    <p class="price">6.590.000 đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Sản phẩm 4">
+                </div>
+                <div class="card-content">
+                    <h3>Logitech MX Master 3S</h3>
+                    <p class="price">2.290.000 đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const loader = document.querySelector('.loader-container');
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+                loader.style.transition = 'opacity 0.4s ease';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
