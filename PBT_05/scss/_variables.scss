@@ -1,0 +1,16 @@
+/* ==========================================================================
+   VARIABLES - QUẢN LÝ TẬP TRUNG TỐI THIỂU 8 BIẾN SỐ
+   ========================================================================== */
+$primary-color:       #2563eb;       /* Xanh dương chủ đạo */
+$secondary-color:     #ef4444;       /* Đỏ cam cho giá cả/khuyến mãi */
+$font-primary:        system-ui, -apple-system, sans-serif;
+$breakpoint-tablet:   768px;
+$breakpoint-desktop:  1024px;
+$spacing-sm:          8px;
+$spacing-md:          16px;
+$spacing-lg:          32px;
+
+/* Bổ sung một số biến bổ trợ để đồng bộ giao diện */
+$bg-body:             #f8fafc;
+$card-bg:             #ffffff;
+$text-dark:           #0f172a;

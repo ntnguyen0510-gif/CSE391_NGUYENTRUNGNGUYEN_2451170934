@@ -1,0 +1,106 @@
+/* ==========================================================================
+   NESTING - TRIỂN KHAI CẤU TRÚC LỒNG NHAU VÀ SỬ DỤNG BIẾN + MIXIN
+   ========================================================================== */
+body {
+    background-color: $bg-body;
+    font-family: $font-primary;
+    color: $text-dark;
+    padding: $spacing-lg;
+}
+
+// Block 1: Lưới sản phẩm (Tích hợp Mixin Responsive)
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Mặc định 1 cột trên Mobile
+    gap: $spacing-md;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include respond-to('tablet') {
+        grid-template-columns: repeat(2, 1fr); // 2 cột trên Tablet
+    }
+
+    @include respond-to('desktop') {
+        grid-template-columns: repeat(4, 1fr); // 4 cột trên Desktop
+    }
+}
+
+// Block 2: Thẻ Card Sản phẩm (Nesting + Parent Selector &, sử dụng Variables & Mixins)
+.card {
+    background-color: $card-bg;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: $spacing-md;
+    @include card-shadow; // Gọi mixin tạo bóng đổ đổ bóng
+
+    .card-image {
+        width: 100%;
+        height: 180px;
+        background-color: #f1f5f9;
+        @include flex-center; // Gọi mixin căn giữa ảnh giả lập
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        margin: $spacing-md 0 $spacing-sm 0;
+        font-weight: 600;
+    }
+
+    .card-price {
+        color: $secondary-color; // Sử dụng biến màu phụ
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: $spacing-md;
+    }
+
+    // Trạng thái hover nhấc card (Sử dụng parent selector &)
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    // Class biến thể sản phẩm nổi bật đặc biệt
+    &.featured {
+        border: 2px solid $primary-color; // Sử dụng biến màu chính
+        position: relative;
+        
+        &::before {
+            content: "BÁN CHẠY";
+            position: absolute;
+            top: $spacing-sm;
+            right: $spacing-sm;
+            background-color: $primary-color;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    }
+}
+
+// Block 3: Nút Bấm hành động (Nesting lồng trong thành phần)
+.btn-action {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: darkene(#2563eb, 10%); /* Sử dụng hàm xử lý màu của Sass */
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}

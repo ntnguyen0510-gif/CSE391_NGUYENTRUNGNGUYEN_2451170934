@@ -219,3 +219,17 @@ Các phương pháp và công cụ phổ biến để thực hiện bước biê
 -Sử dụng công cụ dòng lệnh (Command Line Interface - CLI): Cài đặt gói sass thông qua Node.js (NPM). Bạn chạy câu lệnh trong cửa sổ Terminal:Bashsass style.scss style.css --watch
 (Lệnh này có nghĩa là: Hãy liên tục theo dõi file style.scss, nếu có thay đổi gì thì tự động biên dịch và cập nhật đè vào file style.css ngay lập tức).
 -Sử dụng các công cụ Build Tools mạnh mẽ trong dự án lớn: Các lập trình viên chuyên nghiệp thường tích hợp bước biên dịch này vào các hệ thống tự động hóa như Vite, Webpack, hoặc Gulp để vừa biên dịch vừa tự động nén nhỏ dung lượng file CSS (Minify) trước khi tải lên máy chủ.
+
+Phần B:
+Câu B3:
+# Nhật Ký Biên Dịch Dự Án SCSS (Refactor Bài B3)
+
+## 1. Công cụ sử dụng
+Dự án sử dụng trình biên dịch **Dart Sass** chính thức được khuyến nghị bởi core team Sass (thông qua môi trường cài đặt Node.js/NPM hoặc Extension).
+
+## 2. Các câu lệnh biên dịch thực tế
+
+### Cách 1: Sử dụng Command Line (CLI) trực tiếp trong Terminal
+Để biên dịch file `scss/style.scss` thành file `style.css` thông thường bên ngoài, chạy lệnh:
+```bash
+sass scss/style.scss style.css

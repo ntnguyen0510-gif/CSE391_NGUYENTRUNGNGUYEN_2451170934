@@ -1,0 +1,12 @@
+/* ==========================================================================
+   MAIN STYLE - TRUNG TÂM IMPORT CÁC PARTIALS FILE
+   ========================================================================== */
+
+// Import variables đầu tiên để các file sau có thể sử dụng dữ liệu biến
+@import 'variables';
+
+// Import mixins tiếp theo để các cấu phần component có thể kế thừa hàm
+@import 'mixins';
+
+// Import các cấu trúc giao diện chính
+@import 'components';

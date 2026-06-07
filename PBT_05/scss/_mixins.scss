@@ -1,0 +1,27 @@
+/* ==========================================================================
+   MIXINS - ĐỊNH NGHĨA 3 MIXINS THIẾT THỰC NHẤT
+   ========================================================================== */
+
+// 1. Mixin Responsive linh hoạt theo Breakpoint
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == 'tablet' {
+        @media (min-width: $breakpoint-tablet) { @content; }
+    }
+    @else if $breakpoint == 'desktop' {
+        @media (min-width: $breakpoint-desktop) { @content; }
+    }
+}
+
+// 2. Mixin Flexbox Căn Giữa Tuyệt Đối (Hỗ trợ đổi hướng chiều trục)
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+// 3. Mixin Box Shadow cao cấp cho thẻ Card
+@mixin card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
