@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Grid Layout</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <header class="header">
+            <div class="logo">GridMart</div>
+            <nav class="nav-links">
+                <a href="#">Trang chủ</a>
+                <a href="#">Cửa hàng</a>
+                <a href="#">Ưu đãi</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+            <div class="cart-icon">🛒 Giỏ hàng (0)</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-text">
+                <h1>SIÊU ĐẠI TIỆC CÔNG NGHỆ</h1>
+                <p>Khám phá bộ sưu tập sản phẩm đỉnh cao ưu đãi lên đến 40% chỉ trong tuần này.</p>
+                <button class="btn-shop">Mua ngay</button>
+            </div>
+            
+            <div class="featured-product-card">
+                <div class="badge-featured">NỔI BẬT</div>
+                <div class="feat-img">💻 MacBook Pro M3 Max</div>
+                <div class="feat-info">
+                    <h3>MacBook Pro 16 inch M3 Max</h3>
+                    <p class="feat-price">79.990.000 đ <span class="old-price">89.990.000 đ</span></p>
+                    <button class="btn-buy-now">Sở hữu ngay</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3>Danh mục tuyển chọn</h3>
+                <label><input type="checkbox" checked> Laptop & Máy tính</label>
+                <label><input type="checkbox"> Điện thoại di động</label>
+                <label><input type="checkbox"> Máy tính bảng</label>
+                <label><input type="checkbox"> Phụ kiện cao cấp</label>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Khoảng giá (VND)</h3>
+                <label><input type="radio" name="price"> Dưới 5 triệu</label>
+                <label><input type="radio" name="price" checked> từ 5 - 15 triệu</label>
+                <label><input type="radio" name="price"> từ 15 - 30 triệu</label>
+                <label><input type="radio" name="price"> Trên 30 triệu</label>
+            </div>
+
+            <div class="filter-group">
+                <h3>Đánh giá khách hàng</h3>
+                <label><input type="checkbox"> ⭐⭐⭐⭐⭐ (5 sao)</label>
+                <label><input type="checkbox"> ⭐⭐⭐⭐☆ (Từ 4 sao)</label>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2 class="grid-title">Danh sách sản phẩm mới nhất</h2>
+            
+            <div class="product-grid">
+                <div class="card">
+                    <div class="card-img">📱 iPhone 15</div>
+                    <h4>iPhone 15 128GB Chính hãng</h4>
+                    <p class="price">19.890.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="card">
+                    <div class="card-img">⌚ Apple Watch S9</div>
+                    <h4>Apple Watch S9 GPS 45mm nhôm</h4>
+                    <p class="price">10.490.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="card">
+                    <div class="card-img">🎧 AirPods 3</div>
+                    <h4>AirPods Gen 3 Lightning sạc dây</h4>
+                    <p class="price">3.990.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="card">
+                    <div class="card-img">💻 Asus ROG Strix</div>
+                    <h4>Asus ROG Strix G16 Core i7 gaming</h4>
+                    <p class="price">32.490.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="card">
+                    <div class="card-img">⌨️ Bàn phím cơ MX</div>
+                    <h4>Bàn phím Logitech MX Mechanical</h4>
+                    <p class="price">3.650.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="card">
+                    <div class="card-img">🖱️ Chuột Anywhere 3S</div>
+                    <h4>Chuột không dây Logitech Anywhere 3S</h4>
+                    <p class="price">1.890.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="ads">
+            <div class="ads-banner">
+                <span class="ads-tag">QUẢNG CÁO</span>
+                <div class="ads-placeholder">
+                    <p>🔥 TRẢ GÓP 0% 🔥</p>
+                    <span>Tất cả dòng máy Samsung Galaxy mới</span>
+                </div>
+            </div>
+            
+            <div class="ads-banner voucher">
+                <span class="ads-tag">VOUCHER</span>
+                <div class="ads-placeholder">
+                    <p class="code">GRIDMART2026</p>
+                    <span>Giảm ngay 200k cho đơn hàng đầu tiên</span>
+                </div>
+            </div>
+        </aside>
+
+        <footer class="footer">
+            <p>© 2026 GridMart E-Commerce Platform. Tất cả các quyền được bảo lưu.</p>
+            <p>Hệ thống Thiết Kế Giao Diện CSS Grid nâng cao.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
