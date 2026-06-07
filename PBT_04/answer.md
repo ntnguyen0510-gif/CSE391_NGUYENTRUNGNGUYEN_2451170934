@@ -52,3 +52,32 @@ TH5:
 |-------------------------------------------------------|
 |    [ Item 7 ]    |            (Trống)   |            (Trống)   | -> Hàng 3
 +-------------------------------------------------------+
+
+Phần C:
+Câu C1:
+Tình huống 1: Navigation bar ngang (logo + menu + buttons)
+Lựa chọn: Flexbox
+
+Giải thích: Thanh điều hướng (Navbar) là layout 1 chiều (chiều ngang). Các phần tử bên trong có kích thước nội dung không cố định (phụ thuộc vào độ dài chữ của từng chữ Home, Products, Contact...). Flexbox là công cụ hoàn hảo để xử lý căn chỉnh trục ngang, tự động kéo giãn khoảng cách bằng justify-content: space-between và căn giữa trục dọc hoàn hảo bằng align-items: center.
+
+Tình huống 2: Lưới ảnh Instagram (3 cột đều nhau, số ảnh không biết trước)
+Lựa chọn: Grid
+
+Giải thích: Đây là layout 2 chiều dạng lưới (hàng và cột) cần sự đồng đều tuyệt đối. Với Grid, bạn chỉ cần định nghĩa số cột cố định bằng grid-template-columns: repeat(3, 1fr);. Khi số lượng ảnh tăng lên và không biết trước, CSS Grid sẽ tự động tạo thêm các hàng mới (implicit grid) và xếp các ảnh vào đúng vị trí tăm tắp mà không cần tính toán thủ công hay lo bị vỡ dòng.
+
+Tình huống 3: Layout blog (Main content + Sidebar)
+Lựa chọn: Grid (hoặc Flexbox đều được, nhưng Grid tối ưu hơn cho cấu trúc tổng thể)
+
+Giải thích: Đây là bố cục trang lớn (macro layout). Dùng Grid giúp bạn định hình rõ ràng bộ khung của trang web bằng cách phân chia không gian cột cố định cho Sidebar (ví dụ: 250px) và phần còn lại cho Main Content (1fr). Khi thiết kế responsive (giao diện điện thoại), bạn có thể dễ dàng chuyển Sidebar xuống dưới Main Content chỉ bằng cách thay đổi cấu trúc Grid, tránh được việc các khối bị đẩy lệch hướng ngoài ý muốn.
+
+Tình huống 4: Footer với 4 cột thông tin
+Lựa chọn: Kết hợp cả hai (hoặc chọn 1 trong 2 tùy mục đích responsive)
+
+Bố cục tổng thể 4 cột: Dùng Grid với grid-template-columns: repeat(4, 1fr); để đảm bảo 4 khối nội dung lớn luôn có độ rộng bằng nhau tuyệt đối trên màn hình máy tính.
+
+Nội dung bên trong mỗi cột: Dùng Flexbox hướng dọc (flex-direction: column;) để xếp các đường link (Về chúng tôi, Liên hệ...) thẳng hàng từ trên xuống dưới và dễ dàng quản lý khoảng cách bằng thuộc tính gap.
+
+Tình huống 5: Card sản phẩm (Ảnh trên, text giữa, nút dưới — nút luôn dính đáy)
+Lựa chọn: Flexbox
+
+Giải thích: Bản thân một thẻ card sản phẩm đơn lẻ là layout 1 chiều hướng dọc (flex-direction: column;). Flexbox giải quyết bài toán "nút dính đáy" cực kỳ thanh thoát bằng cách thiết lập margin-top: auto; cho nút bấm (hoặc flex-grow: 1; cho phần text ở giữa). Lúc này, dù tiêu đề sản phẩm dài hay ngắn, phần không gian thừa sẽ tự động bị đẩy ra, ép nút bấm luôn nằm sát cạnh dưới của Card tạo nên sự đồng đều.
