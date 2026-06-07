@@ -133,3 +133,11 @@ Dưới đây là cách bạn áp dụng các breakpoint trên vào mã nguồn 
     }
 }
 Tại sao nên nhớ các mốc 576px, 768px, 992px, 1200px?Đây là các con số được đúc kết qua hàng chục năm phát triển web dựa trên thông số phần cứng thực tế của hàng nghìn dòng thiết bị của Apple, Samsung, Dell, LG... Việc tuân thủ theo các breakpoint tiêu chuẩn này giúp giao diện của bạn không bao giờ bị lỗi hiển thị hay tràn viền (horizontal scrollbar) khi người dùng đổi thiết bị truy cập.
+
+Câu A3:
+Chiều rộng màn hình	    .container width    
+375px (iPhone SE)	    100%
+600px	                540px
+800px	                720px
+1000px	                960px
+1400px	                1140px
