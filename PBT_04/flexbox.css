@@ -1,0 +1,225 @@
+/* --- GLOBAL RESET & BASICS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    padding-bottom: 60px;
+}
+
+/* --- PHẦN 1: NAVBAR (Yêu cầu 10đ) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Đẩy Logo sang trái, Menu ở giữa, Đăng nhập sang phải */
+    align-items: center;            /* Căn giữa hoàn hảo theo chiều dọc (Vertical Centering) */
+    background-color: #ffffff;
+    height: 70px;
+    padding: 0 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+}
+
+/* Menu items nằm giữa */
+.menu-items {
+    display: flex;
+    gap: 30px; /* Các item cách đều nhau dựa vào thuộc tính gap */
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #555555;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 4px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Khi hover: Đổi màu chữ */
+.menu-link:hover, .menu-link.active {
+    color: #3498db;
+}
+
+/* Khi hover: Tạo gạch chân bằng pseudo-element để có hiệu ứng mượt (Underline) */
+.menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+.menu-link:hover::after, .menu-link.active::after {
+    width: 100%;
+}
+
+/* Cụm nút đăng nhập/đăng ký bên phải */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.btn-login:hover {
+    color: #3498db;
+}
+
+.btn-register {
+    text-decoration: none;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #2980b9;
+}
+
+
+/* --- MAIN CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+
+/* --- PHẦN 2: PRODUCT CARDS GRID (Yêu cầu 10đ) --- */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Bật tính năng bọc dòng khi quá số lượng phần tử trên hàng */
+    gap: 20px;       /* Khoảng cách gap cố định giữa các hàng và cột */
+}
+
+/* Cấu trúc từng Card sản phẩm */
+.product-card {
+    /* Chia 4 cột chuẩn xác theo công thức: flex-grow | flex-shrink | flex-basis */
+    /* Trừ đi 15px để bù trừ cho khoảng cách gap của 4 cột nằm vừa khít container */
+    flex: 0 0 calc(25% - 15px); 
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    
+    /* Thiết lập Flexbox hướng dọc (column) cho bản thân cấu trúc bên trong card */
+    display: flex;
+    flex-direction: column;
+    
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+/* Card khi hover: đẩy nhẹ lên trên và tăng cường đổ bóng */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 1. Ảnh (Nằm trên) */
+.product-image {
+    width: 100%;
+    height: 180px;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* 2. Tên + Giá (Nằm giữa) */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    
+    /* Khống chế tiêu đề tối đa 2 dòng để giao diện đồng đều đẹp mắt */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 42px; 
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+/* 3. Nút Mua (Nằm dưới - Luôn dính đáy card) */
+.btn-buy {
+    /* CHÌA KHÓA: margin-top: auto ép toàn bộ phần trống phía trên giãn ra tối đa, đẩy nút dính đáy */
+    margin-top: auto; 
+    width: 100%;
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    padding: 10px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-buy:hover {
+    background-color: #27ae60;
+}
+
+/* --- RESPONSIVE BREAKPOINTS (Bổ sung giúp bài nộp thêm chuyên nghiệp) --- */
+@media (max-width: 992px) {
+    .product-card {
+        flex: 0 0 calc(50% - 10px); /* Tự động chuyển thành lưới 2 cột trên Tablet */
+    }
+}
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0 15px;
+    }
+    .menu-items {
+        display: none; /* Ẩn bớt menu chữ trên điện thoại để tránh tràn layout */
+    }
+    .product-card {
+        flex: 0 0 100%; /* Chuyển thành lưới 1 cột trên điện thoại dọc */
+    }
+}
