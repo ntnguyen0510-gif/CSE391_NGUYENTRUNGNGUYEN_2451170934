@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive E-Commerce Layout</title>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+    <div class="page-wrapper">
+        
+        <header class="main-header">
+            <div class="logo">FlexShop</div>
+            
+            <button class="hamburger-btn" aria-label="Menu">☰</button>
+            
+            <nav class="nav-menu">
+                <a href="#" class="active">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Khuyến mãi</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+        </header>
+
+        <aside class="sidebar-filter">
+            <h3>Bộ lọc tìm kiếm</h3>
+            <div class="filter-controls">
+                <select class="filter-dropdown">
+                    <option value="">— Danh mục sản phẩm —</option>
+                    <option value="laptop">Laptop & Máy tính</option>
+                    <option value="phone">Điện thoại di động</option>
+                    <option value="accessory">Phụ kiện công nghệ</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="">— Khoảng giá (VND) —</option>
+                    <option value="1">Dưới 5 triệu</option>
+                    <option value="2">Từ 5 - 15 triệu</option>
+                    <option value="3">Trên 15 triệu</option>
+                </select>
+            </div>
+        </aside>
+
+        <main class="main-products">
+            <h2 class="section-title">Xu hướng công nghệ mới</h2>
+            
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=1" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>iPhone 15 Pro Max 256GB</h4>
+                        <p class="price">29.990.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=2" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>MacBook Air M3 13 inch 2024</h4>
+                        <p class="price">27.490.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=3" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>Sony WH-1000XM5 Noise Cancelling</h4>
+                        <p class="price">6.890.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=4" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>iPad Air 6 M2 11 inch Wi-Fi</h4>
+                        <p class="price">16.290.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=5" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>Bàn phím cơ ASUS ROG Azoth</h4>
+                        <p class="price">5.490.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=6" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>Chuột Logitech MX Master 3S</h4>
+                        <p class="price">2.350.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=7" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>Đồng hồ Samsung Galaxy Watch 6</h4>
+                        <p class="price">5.990.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="https://picsum.photos/400/300?random=8" alt="Sản phẩm" class="responsive-img">
+                    </div>
+                    <div class="card-content">
+                        <h4>Loa Bluetooth Marshall Acton III</h4>
+                        <p class="price">7.290.000 đ</p>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <aside class="ads-sidebar">
+            <div class="ads-wrapper">
+                <span class="ads-label">TÀI TRỢ</span>
+                <img src="https://picsum.photos/200/500?random=9" alt="Quảng cáo" class="responsive-img">
+                <p class="ads-text">🔥 Siêu Sale Ngày Đôi - Hoàn tiền lên tới 15% khi thanh toán qua thẻ tín dụng.</p>
+            </div>
+        </aside>
+
+        <footer class="main-footer">
+            <p>© 2026 FlexShop. Hệ thống thiết kế Responsive thực chiến.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

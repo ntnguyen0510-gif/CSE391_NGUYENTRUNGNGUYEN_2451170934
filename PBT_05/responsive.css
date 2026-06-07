@@ -1,0 +1,309 @@
+/* ==========================================================================
+   1. RESET & PHƯƠNG PHÁP MOBILE-FIRST BASE (CẤU HÌNH MẶC ĐỊNH CHO MOBILE < 768px)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    /* Font size nhỏ, linh hoạt trên Mobile */
+    font-size: 14px; 
+    line-height: 1.5;
+}
+
+/* Yêu cầu kỹ thuật: Ảnh Responsive chống tràn khung */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Cấu trúc Layout lưới cơ bản cho Mobile dọc thành 1 hàng đơn */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+/* --- NAVIGATION RESPONSIVE (Mặc định hiện Hamburger trên Mobile) --- */
+.main-header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3rem; /* Dùng đơn vị rem để font-size co giãn theo gốc */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Biểu tượng hamburger ☰ */
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* Ẩn thanh menu thông thường trên Mobile */
+.nav-menu {
+    display: none; 
+}
+
+/* --- SIDEBAR FILTER (Mặc định ẩn hoàn toàn trên Mobile) --- */
+.sidebar-filter {
+    display: none;
+}
+
+/* --- MAIN CONTENT & LƯỚI SẢN PHẨM (Mặc định 1 CỘT TRÊN MOBILE) --- */
+.main-products {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+/* Khai báo lưới 1 cột trên Mobile */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 15px;
+}
+
+.product-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.img-container {
+    background-color: #f1f5f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-content h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #334155;
+}
+
+.card-content .price {
+    font-size: 1.05rem;
+    color: #ef4444;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.btn-buy {
+    width: 100%;
+    padding: 8px 0;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- ADS SIDEBAR (Mặc định ẩn hoàn toàn trên Mobile) --- */
+.ads-sidebar {
+    display: none;
+}
+
+/* --- FOOTER (Cơ bản) --- */
+.main-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   2. BREAKPOINT CHO TABLET (Từ 768px đến 1023px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        font-size: 15px; /* Tăng kích thước chữ tổng thể */
+        padding: 15px;
+    }
+
+    .page-wrapper {
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    /* Hiển thị Sidebar bộ lọc dạng Ngang (filter dropdown) theo sơ đồ đề bài */
+    .sidebar-filter {
+        display: block;
+        background-color: #f1f5f9;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .sidebar-filter h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .filter-controls {
+        display: flex;
+        gap: 15px; /* Sắp xếp các ô select nằm ngang */
+    }
+
+    .filter-dropdown {
+        flex: 1;
+        padding: 8px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 0.9rem;
+    }
+
+    /* Đổi cấu trúc lưới: PRODUCT GRID CHUYỂN THÀNH 2 CỘT SẢN PHẨM */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* ==========================================================================
+   3. BREAKPOINT CHO DESKTOP (Từ 1024px trở lên)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    body {
+        font-size: 16px; /* Kích thước font chữ chuẩn Desktop */
+    }
+
+    /* Tái cấu trúc Layout tổng thể sang dạng Lưới 3 cột ngang lớn */
+    .page-wrapper {
+        display: grid;
+        /* Cột trái Sidebar (240px) | Giữa Products (1fr) | Phải Ads Bar (200px) */
+        grid-template-columns: 240px 1fr 200px;
+        gap: 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Các vùng Header và Footer bắt buộc kéo giãn chiếm full chiều rộng (1 / -1) */
+    .main-header, .main-footer {
+        grid-column: 1 / -1; 
+    }
+
+    /* --- RESPONSIVE NAVIGATION: Ẩn hamburger, hiển thị Menu ngang --- */
+    .hamburger-btn {
+        display: none; 
+    }
+
+    .nav-menu {
+        display: flex; /* Hiện thanh điều hướng ngang */
+        gap: 25px;
+    }
+
+    .nav-menu a {
+        color: #cbd5e1;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+        color: #ffffff;
+    }
+
+    /* --- SIDEBAR CHUYỂN THÀNH BIÊN DỌC BÊN TRÁI (FILTER) --- */
+    .sidebar-filter {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .sidebar-filter h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .filter-controls {
+        flex-direction: column; /* Đẩy các ô select xếp chồng dọc trong thanh bên */
+        gap: 12px;
+    }
+
+    /* --- LƯỚI SẢN PHẨM TRỞ THÀNH 4 CỘT CHUẨN ĐỀ BÀI --- */
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 20px;
+    }
+
+    /* --- KÍCH HOẠT VÀ HIỂN THỊ CỘT QUẢNG CÁO ADS BAR BÊN PHẢI --- */
+    .ads-sidebar {
+        display: block;
+    }
+
+    .ads-wrapper {
+        background-color: #fff;
+        border: 1px solid #e2e8f0;
+        padding: 12px;
+        border-radius: 6px;
+        position: sticky; /* Giữ quảng cáo cố định khi cuộn chuột dọc trang */
+        top: 20px;
+    }
+
+    .ads-label {
+        display: inline-block;
+        font-size: 10px;
+        background-color: #cbd5e1;
+        color: #475569;
+        padding: 2px 5px;
+        font-weight: bold;
+        border-radius: 3px;
+        margin-bottom: 8px;
+    }
+
+    .ads-text {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-top: 10px;
+        text-align: justify;
+    }
+}
