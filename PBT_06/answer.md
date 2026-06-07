@@ -30,5 +30,73 @@ Thành phần                      Đặc điểm co giãn chiều rộng (width
                                  .container thông thường và khóa cứng theo nấc.
 
 
+Phần C:
+Câu C1:
+I. QUY TRÌNH ĐỔI MÀU $primary TRONG BOOTSTRAP
+Để thay đổi màu thương hiệu $primary một cách đồng bộ từ màu xanh mặc định sang màu #E63946, chúng ta bắt buộc phải cấu hình lại mã nguồn Sass của Bootstrap trước khi nó được biên dịch ra CSS.
+
+1. Các công cụ cần chuẩn bị
+Môi trường Node.js & NPM để quản lý và cài đặt thư viện Bootstrap gốc.
+
+Trình biên dịch Sass (Dart Sass): Cài đặt qua dòng lệnh CLI bằng NPM (npm install -g sass) hoặc sử dụng extension như Live Sass Compiler trên VS Code.
+
+Thư viện Bootstrap gốc (Source code SCSS): Được cài đặt thông qua câu lệnh npm install bootstrap.
+
+2. Các file cần chỉnh sửa và tạo mới
+Quy trình đúng chuẩn không bao giờ được phép sửa trực tiếp vào file nằm trong thư mục node_modules/bootstrap. Thay vào đó, bạn cần tạo các file tùy biến riêng:
+
+Bước 1: Tạo một file scss chính của dự án, ví dụ đặt tên là custom.scss.
+
+Bước 2: Khai báo đè (override) biến màu $primary bằng mã màu mới TRƯỚC TỪ KHÓA IMPORT mã nguồn Bootstrap.
+
+Cấu trúc file custom.scss sẽ được viết như sau:
+
+SCSS
+// 1. Khai báo biến màu mới của bạn (Viết trước để ghi đè giá trị mặc định)
+$primary: #E63946;
+
+// 2. Tùy chọn bổ sung: Thay đổi bản đồ màu (Color map) nếu cần
+// $theme-colors: (
+//   "primary": $primary
+// );
+
+// 3. Import toàn bộ thư viện Bootstrap gốc vào để nhận cấu hình mới
+@import "../node_modules/bootstrap/scss/bootstrap";
+Bước 3: Chạy lệnh biên dịch file custom.scss thành file custom.css để nhúng vào HTML:
+
+Bash
+sass custom.scss custom.css
+II. TẠI SAO KHÔNG NÊN OVERRIDE TRỰC TIẾP .btn-primary { background: red; }?
+Việc ghi đè trực tiếp bằng CSS thuần (.btn-primary { background: red; }) là một lỗi tư duy thiết kế hệ thống nghiêm trọng (Anti-pattern). Chúng ta nên dùng SASS Variables vì 3 lý do cốt lõi sau:
+
+1. Tính đồng bộ toàn hệ thống (System-wide Consistency)
+Trong Bootstrap, biến $primary không chỉ quy định màu nền của mỗi nút bấm .btn-primary. Nó còn được Framework sử dụng tự động để tính toán và tạo ra hàng trăm Class khác, bao gồm:
+
+Màu chữ liên kết (.text-primary)
+
+Màu nền thông thường (.bg-primary)
+
+Màu viền đường kẻ (.border-primary)
+
+Màu trạng thái kích hoạt của thẻ Nav, Pagination, Progress Bar, Form Checkbox, v.v.
+
+Nếu bạn chỉ override .btn-primary, nút bấm của bạn sẽ biến thành màu đỏ, nhưng các thành phần như viền input, liên kết văn bản, màu thẻ active... vẫn sẽ là màu xanh dương mặc định. Giao diện trang web sẽ bị vá víu, rời rạc và mất đồng bộ thương hiệu.
+
+2. Đồng bộ các trạng thái tương tác động (Hover, Active, Focus, Disabled)
+Khi bạn đổi màu $primary qua biến Sass, Bootstrap sẽ tự động chạy các hàm xử lý màu (như shade-color() hay tint-color()) để tự sinh ra các gam màu phái sinh chuẩn xác cho nút bấm khi di chuột vào hoặc nhấn giữ.
+
+Nếu bạn dùng CSS thuần, bạn sẽ phải viết thủ công thêm rất nhiều dòng code rườm rà như:
+
+CSS
+.btn-primary { background-color: red; border-color: red; }
+.btn-primary:hover { background-color: darkred; }
+.btn-primary:focus { box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.5); }
+.btn-primary:disabled { background-color: lightpink; }
+Cách viết thủ công này cực kỳ tốn thời gian, dễ sót và làm tăng dung lượng file CSS một cách không cần thiết.
+
+3. Dễ dàng bảo trì và mở rộng (Maintainability)
+Nếu sau này doanh nghiệp thay đổi bộ nhận diện thương hiệu từ màu đỏ #E63946 sang màu tím hoặc xanh lá, người viết bằng Sass chỉ cần thay đổi độc nhất 1 dòng code ở vị trí khai báo biến ban đầu rồi lưu lại là xong.
+
+Ngược lại, người lạm dụng ghi đè CSS thuần sẽ phải dùng tính năng Tìm & Thay thế (Find & Replace) trên toàn bộ dự án để sửa hàng loạt class thủ công, dẫn tới nguy cơ cao làm lỗi/vỡ cấu trúc giao diện ở những phân đoạn khác.
 
  
