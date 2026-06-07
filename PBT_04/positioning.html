@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Layout CSS Position</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">MYSHOP</div>
+        <nav class="nav">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Tin tức</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Danh mục</h3>
+            <ul>
+                <li><a href="#">Điện thoại</a></li>
+                <li><a href="#">Laptop & PC</a></li>
+                <li><a href="#">Phụ kiện công nghệ</a></li>
+                <li><a href="#">Thiết bị âm thanh</a></li>
+                <li><a href="#">Đồng hồ thông minh</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge-hot">Hot</div>
+                    <div class="product-image">Ảnh Sản Phẩm 1</div>
+                    <div class="product-title">iPhone 15 Pro Max</div>
+                    <div class="product-price">29.990.000 đ</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-hot">Hot</div>
+                    <div class="product-image">Ảnh Sản Phẩm 2</div>
+                    <div class="product-title">MacBook Air M3</div>
+                    <div class="product-price">27.490.000 đ</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">Ảnh Sản Phẩm 3</div>
+                    <div class="product-title">Sony WH-1000XM5</div>
+                    <div class="product-price">6.490.000 đ</div>
+                </div>
+            </div>
+
+            <div class="dummy-content">
+                <h3>Khu vực cuộn trang kiểm tra Position</h3>
+                <p>Hãy cuộn chuột xuống dưới để kiểm tra các tính năng:</p>
+                <ul>
+                    <li><strong>Header:</strong> Vẫn luôn cố định ở mép trên cùng màn hình.</li>
+                    <li><strong>Sidebar:</strong> Sẽ trượt theo màn hình và dừng lại cách Header một khoảng an toàn (top: 80px).</li>
+                    <li><strong>Nút cuộn lên:</strong> Luôn cố định ở góc dưới cùng bên phải màn hình.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <a href="#" class="scroll-to-top" title="Lên đầu trang">↑</a>
+
+</body>
+</html>
