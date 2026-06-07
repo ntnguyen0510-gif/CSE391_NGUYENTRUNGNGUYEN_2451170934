@@ -1,3 +1,4 @@
+Track 1:
 Phần A:
 Câu A1:
 
@@ -178,3 +179,73 @@ Website yêu cầu tính sáng tạo độc quyền cao (Creative/Agency Portfol
 Ứng dụng Web tối ưu hiệu năng tối đa (Performance-critical Apps): Thư viện Bootstrap chứa hàng nghìn dòng code CSS cho mọi linh kiện. Nếu dự án của bạn chỉ dùng một cái Navbar và vài cái Card mà nhúng nguyên file CSS Bootstrap (nặng khoảng 150kb - 200kb) sẽ làm tăng thời gian tải trang vô ích cho người dùng di động mạng yếu.
 
 Mục đích học tập căn bản: Nếu bạn đang trong giai đoạn làm quen với HTML/CSS, lạm dụng Bootstrap quá sớm sẽ khiến bạn bị mất gốc, không hiểu bản chất cơ chế vận hành sâu bên dưới của Flexbox, Grid Layout và Media Queries.
+
+Track 2:
+Phần A:
+Câu A1:
+1. Thẻ bao bọc ngoài cùng (<div class="flex items-center ...">)
+flex → display: flex; (Kích hoạt bố cục Flexbox cho container).
+
+items-center → align-items: center; (Căn các phần tử con chính giữa theo trục dọc).
+
+justify-between → justify-content: space-between; (Dãn đều khoảng cách, đẩy các phần tử con ra sát 2 rìa biên trái/phải).
+
+p-4 → padding: 1rem; /* 16px */ (Tạo khoảng đệm đều 4 phía bên trong khối).
+
+bg-white → background-color: rgb(255 255 255); (Đặt màu nền của khối là màu trắng).
+
+shadow-md → box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); (Đổ bóng mờ mức độ trung bình cho khối).
+
+rounded-lg → border-radius: 0.5rem; /* 8px */ (Bo tròn 4 góc của khối ở mức độ lớn).
+
+hover:shadow-xl → Khi di chuột vào (:hover), áp dụng hiệu ứng đổ bóng cực lớn box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);.
+
+transition-shadow → transition-property: box-shadow; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); (Chỉ định hiệu ứng chuyển động mượt mà riêng cho thuộc tính bóng đổ).
+
+duration-300 → transition-duration: 300ms; (Thời gian diễn ra hiệu ứng chuyển động là 300 miligiây).
+
+2. Thẻ hình ảnh ảnh đại diện (<img class="w-16 h-16 ..." />)
+w-16 → width: 4rem; /* 64px */ (Đặt chiều rộng của ảnh là 64px).
+
+h-16 → height: 4rem; /* 64px */ (Đặt chiều cao của ảnh là 64px).
+
+rounded-full → border-radius: 9999px; (Bo tròn tối đa giúp ảnh vuông biến thành hình tròn).
+
+object-cover → object-fit: cover; (Giữ nguyên tỷ lệ ảnh, tự động cắt phần thừa để ảnh không bị bóp méo khi đưa vào khung cố định).
+
+3. Thẻ bọc thông tin văn bản (<div class="ml-4 flex-1">)
+ml-4 → margin-left: 1rem; /* 16px */ (Tạo khoảng cách bên ngoài ở phía bên trái để đẩy chữ ra xa hình ảnh).
+
+flex-1 → flex: 1 1 0%; (Cho phép khối này tự động dãn ra chiếm trọn phần không gian trống còn lại ở giữa).
+
+4. Thẻ tiêu đề tên người dùng (<h3 class="text-lg ...">)
+text-lg → font-size: 1.125rem; /* 18px */ và line-height: 1.75rem; (Thiết lập cỡ chữ mức độ lớn).
+
+font-semibold → font-weight: 600; (Độ đậm của chữ ở mức vừa phải - bán đậm).
+
+text-gray-800 → color: rgb(31 41 55); (Đặt màu chữ là màu xám đậm).
+
+truncate → overflow: hidden; text-overflow: ellipsis; white-space: nowrap; (Nếu tên quá dài, chữ sẽ không bị xuống dòng mà tự động cắt bớt và thay bằng dấu 3 chấm ...).
+
+5. Thẻ đoạn văn mô tả nghề nghiệp (<p class="text-sm ...">)
+text-sm → font-size: 0.875rem; /* 14px */ và line-height: 1.25rem; (Thiết lập cỡ chữ nhỏ).
+
+text-gray-500 → color: rgb(107 114 128); (Đặt màu chữ là màu xám vừa - giảm độ nổi bật so với tên chính).
+
+6. Thẻ nút bấm hành động (<button class="px-4 py-2 ...">)
+px-4 → padding-left: 1rem; padding-right: 1rem; /* 16px */ (Tạo khoảng đệm bên trong sang hai bên trái và phải).
+
+py-2 → padding-top: 0.5rem; padding-bottom: 0.5rem; /* 8px */ (Tạo khoảng đệm bên trong lên hai phía trên và dưới).
+
+bg-blue-500 → background-color: rgb(59 130 246); (Đặt màu nền của nút là màu xanh dương tiêu chuẩn).
+
+text-white → color: rgb(255 255 255); (Đặt màu chữ hiển thị trong nút là màu trắng).
+
+rounded-md → border-radius: 0.375rem; /* 6px */ (Bo tròn nhẹ 4 góc của nút bấm).
+
+hover:bg-blue-600 → Khi di chuột vào (:hover), đổi màu nền nút sang màu xanh dương sậm hơn background-color: rgb(37 99 235);.
+
+focus:ring-2 → Khi click chuột hoặc tab tiêu điểm vào nút (:focus), tạo một vòng hào quang bao quanh nút với độ dày box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-comment-shadow); (với thông số ring rộng 2px).
+
+focus:ring-blue-300 → Chỉ định màu sắc cho vòng hào quang khi focus là màu xanh dịu nhẹ  --tw-ring-color: rgb(147 197 253);.
+
