@@ -358,3 +358,30 @@ CSS
     @apply relative max-w-[280px] w-full bg-white rounded-lg shadow-md overflow-hidden;
 }
 Lưu ý: Mặc dù @apply giúp HTML sạch như CSS thuần, nhưng các nhà phát triển Tailwind khuyến cáo không nên lạm dụng nó, vì nó sẽ làm mất đi lợi thế lớn nhất của Tailwind là sửa code không cần rời file HTML và làm tăng dung lượng file CSS được tạo ra.
+
+Câu C2:
+I. TẠI SAO FILE CSS CUỐI CÙNG CỦA TAILWIND LẠI NHỎ HƠN BOOTSTRAP?
+Mặc dù file HTML của Tailwind chứa lượng class dằng dặc khiến dung lượng HTML phình to, nhưng file CSS tổng kết hợp để tải trang của Tailwind lại nhỏ hơn Bootstrap rất nhiều (thường chỉ nặng khoảng dưới 10KB so với hơn 150KB của Bootstrap). Lý do nằm ở triết lý thiết kế lõi:
+Tính hữu hạn của Utilities so với tính vô hạn của Components (Bootstrap):
+
+Bootstrap hoạt động theo hướng Component: Càng tạo thêm nhiều giao diện mới, bạn hoặc Bootstrap càng phải viết thêm CSS cho các component đó (.card, .navbar, .modal, .carousel,...). Code CSS của Bootstrap tăng trưởng tuyến tính theo quy mô cấu trúc.
+
+1. Tailwind hoạt động theo hướng Utilities cố định: Các class như flex, pt-4, text-red-500 chỉ được định nghĩa độc nhất 1 lần trong file CSS gốc. Cho dù bạn có copy-paste tạo ra 1.000 cái thẻ card sản phẩm trên HTML, thì file CSS cuối cùng của Tailwind không tăng thêm một dòng nào, vì toàn bộ 1.000 cái card đó đều dùng chung lại các thuộc tính CSS nguyên tử (atomic) đã được tạo sẵn.
+2. Tỷ lệ tái sử dụng CSS đạt mức tối đa: Với Tailwind, bạn càng viết nhiều HTML, tỷ lệ trùng lặp class càng cao, dẫn đến file CSS nén đạt trạng thái "bão hòa" và không bao giờ phình to thêm nữa khi dự án mở rộng.
+II. GIẢI THÍCH TAILWIND PURGECSS & TAILWIND JIT (JUST-IN-TIME)
+Để có được file CSS siêu nhỏ gọn như trên, Tailwind dựa hoàn toàn vào cơ chế biên dịch thông minh mang tên JIT (Just-In-Time Compiler) kết hợp cùng tư duy tự động dọn rác của PurgeCSS.
+1. Nguyên lý vận hành của JIT:Trong các phiên bản cũ, Tailwind phải tạo sẵn hàng triệu class ra một file CSS khổng lồ (nặng hơn 3MB) rồi lập trình viên mới dùng dần. Kể từ phiên bản v3+, cơ chế JIT thay đổi hoàn toàn cục diện: Mặc định ban đầu file CSS của Tailwind là trống rỗng ($0\ KB$).
+2. Cơ chế quét và loại bỏ rác (Purge):Khi bạn lập trình và gõ một class vào file HTML (ví dụ: bg-indigo-600), trình biên dịch JIT sẽ chạy ngầm, quét qua file HTML đó, phát hiện ra chữ bg-indigo-600 và ngay lập tức "bắn" duy nhất thuộc tính background-color: ... tương ứng vào file CSS.Nó loại bỏ những gì? Nó sẽ loại bỏ tất cả những class nào bạn KHÔNG gõ vào HTML. Nếu trong suốt dự án, bạn không hề dùng đến các class như màu tím bg-purple-500 hay hiệu ứng xoay rotate-45, JIT sẽ thẳng tay xóa bỏ/không thèm sinh ra chúng. Kết quả là file CSS cuối cùng mang đi chạy thực tế cực kỳ "sạch sẽ", chỉ chứa đúng những gì giao diện đang thực sự hiển thị.
+
+III. 2 TÌNH HUỐNG CỤ THỂ KHÔNG NÊN DÙNG TAILWIND CSS
+Mặc dù rất mạnh mẽ về hiệu năng, TailwindCSS hoàn toàn không phải là viên đạn bạc cho mọi dự án. Dưới đây là 2 tình huống cụ thể tuyệt đối nên tránh dùng Tailwind:
+
+Tình huống 1: Phát triển ứng dụng mà giao diện được cấu hình bằng CMS hoặc chứa nội dung động do người dùng nhập từ Database (Dynamic Class Names)
+Mô tả: Dự án làm các trang web tin tức, blog hoặc hệ thống e-commerce mà quản trị viên có thể vào admin chọn màu sắc bất kỳ cho nút bấm từ một bảng màu (Ví dụ: lưu chuỗi text "bg-" + product.color vào database để render động).
+
+Lý do không nên dùng: Cơ chế JIT của Tailwind quét code theo dạng text tĩnh (Static Regex). Nó bắt buộc phải nhìn thấy trọn vẹn chữ bg-red-500 trong mã nguồn thì mới sinh ra CSS. Nếu bạn viết code nối chuỗi động kiểu class={`bg-${color}-500`}, Tailwind JIT sẽ không hiểu và không sinh ra các mã màu đó trong file CSS cuối cùng, dẫn đến việc giao diện bị mất màu hoàn toàn khi chạy thực tế.
+
+Tình huống 2: Xây dựng các trang Web Marketing/Landing Page có thiết kế phá cách, đồ họa nghệ thuật nặng (Highly Customized Art Direction) hoặc bàn giao mã nguồn cho đội ngũ không biết Tailwind
+Mô tả: Dự án làm website giới thiệu bộ sưu tập thời trang xa xỉ, portfolio của các Agency sáng tạo với các bố cục dị biệt, sử dụng hàng loạt các góc xoay, layer chồng chéo phức tạp, hoặc các hiệu ứng Animation/Clip-path đo ni đóng giày riêng cho từng phân đoạn nhỏ theo bản vẽ Figma của Designer.
+
+Lý do không nên dùng: Để hiện thực hóa các thiết kế phá cách này bằng Tailwind, bạn sẽ phải liên tục lạm dụng cú pháp giá trị tùy biến (Arbitrary values) dạng đóng mở ngoặc vuông như w-[317px] top-[-14.5px] clip-path-[polygon(...)]. Việc này khiến chuỗi class trong HTML trở nên dằng dặc, quái dị, làm mất hoàn toàn lợi thế của các class Utility có sẵn và khiến code cực kỳ khó đọc, khó bảo trì so với việc viết tập trung trong một file Styled-Component hoặc CSS thuần. Ngoài ra, nếu đối tác nhận bàn giao web chỉ biết CSS truyền thống, họ sẽ bất lực trong việc sửa chữa giao diện của bạn.
