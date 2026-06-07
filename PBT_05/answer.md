@@ -141,3 +141,81 @@ Chiều rộng màn hình	    .container width
 800px	                720px
 1000px	                960px
 1400px	                1140px
+
+Câu A4:
+1. Giải thích 4 tính năng chính của SCSS kèm ví dụa. Variables (Biến số)Giải thích: Cho phép bạn lưu trữ các giá trị được sử dụng lặp đi lặp lại nhiều lần trong toàn bộ dự án (như mã màu, font chữ, kích thước padding, độ rộng border) vào một cái tên gợi nhớ bắt đầu bằng ký tự $. Khi muốn thay đổi giao diện (ví dụ đổi màu chủ đạo của thương hiệu từ Xanh sang Đỏ), bạn chỉ cần sửa giá trị ở một nơi duy nhất thay vì phải đi tìm và sửa hàng trăm dòng CSS.Ví dụ SCSS:SCSS$primary-color: #3498db;
+$base-padding: 15px;
+
+.button {
+    background-color: $primary-color;
+    padding: $base-padding;
+}
+.nav-item {
+    color: $primary-color;
+}
+b. Nesting (Viết CSS lồng nhau)Giải thích: Tính năng này cho phép bạn viết các bộ chọn CSS lồng vào bên trong nhau, mô phỏng lại chính xác cấu trúc hình cây phân cấp của các thẻ HTML. Nó giúp mã nguồn gọn gàng hơn, dễ đọc, dễ quản lý cấu trúc và tránh việc phải viết đi viết lại tên của class cha.Ví dụ SCSS:SCSS.navbar {
+    background: #fff;
+    padding: 10px;
+
+    .menu-list {
+        display: flex;
+        list-style: none;
+
+        li {
+            margin-right: 20px;
+
+            a {
+                text-decoration: none;
+                /* Ký tự & đại diện cho chính phần tử cha (thẻ a) */
+                &:hover { color: red; } 
+            }
+        }
+    }
+}
+c. Mixins (@mixin và @include)Giải thích: Mixin giống như một "hàm" (function) trong lập trình. Bạn dùng @mixin để định nghĩa ra một nhóm các thuộc tính CSS thường xuyên đi kèm với nhau (có thể truyền vào các tham số/biến số thay đổi linh hoạt). Sau đó, ở bất kỳ class nào cần dùng lại đoạn CSS này, bạn chỉ cần dùng cú pháp @include để gọi nó ra.Ví dụ SCSS:SCSS/* Định nghĩa một mixin để căn giữa tuyệt đối bằng Flexbox */
+@mixin center-flex($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sử dụng mixin */
+.hero-container {
+    @include center-flex(column); /* Truyền tham số hướng dọc */
+    height: 100vh;
+}
+.icon-wrapper {
+    @include center-flex(); /* Không truyền thì lấy mặc định là row */
+}
+d. @extend / Inheritance (Kế thừa)Giải thích: Cho phép một bộ chọn class chia sẻ và sử dụng chung lại toàn bộ các thuộc tính CSS đã được định nghĩa ở một class khác. Điểm khác biệt lớn nhất của @extend so với Mixin là trong file CSS đầu ra sau khi biên dịch, các class dùng chung sẽ được gom lại và viết chung bằng dấu phẩy (comma-separated), giúp file CSS thành phẩm tối ưu dung lượng và không bị trùng lặp code.Ví dụ SCSS:SCSS/* Tạo một class gốc (base) làm chuẩn */
+.message-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    color: #333;
+}
+
+/* Kế thừa lại class gốc và bổ sung thuộc tính riêng biệt */
+.success-box {
+    @extend .message-box;
+    border-color: green;
+    background-color: #e6ffe6;
+}
+
+.error-box {
+    @extend .message-box;
+    border-color: red;
+    background-color: #ffe6e6;
+}
+2. Tại sao trình duyệt KHÔNG đọc được file .scss?Trình duyệt web (như Google Chrome, Safari, Microsoft Edge, Firefox) được lập trình để chỉ hiểu và thông dịch duy nhất một bộ quy chuẩn ngôn ngữ định dạng giao diện tĩnh nguyên bản, đó là CSS tiêu chuẩn (Vanilla CSS).
+
+File .scss chứa các cú pháp mở rộng mang tư duy lập trình như biến số ($), hàm lồng nhau, vòng lặp, kế thừa... Trình duyệt không có bộ máy phân tích dữ liệu (parser) cho những cú pháp này. Nếu bạn liên kết trực tiếp một file .scss vào thẻ <link href="style.scss"> trong HTML, trình duyệt sẽ hoàn toàn bỏ qua và không áp dụng bất kỳ giao diện nào cho trang web của bạn.
+
+3. Cần bước gì để chuyển đổi SCSS --> CSS?
+Để chuyển đổi từ SCSS sang CSS, bạn bắt buộc phải trải qua một bước gọi là Biên dịch (Compilation) bằng một công cụ tiền xử lý (Pre-processor compiler). Công cụ này sẽ đọc hiểu file cấu trúc .scss của bạn, tính toán các biến số, giải nén các hàm lồng nhau, gộp các class kế thừa rồi "phiên dịch" nó ra thành một file .css thuần túy.
+Các phương pháp và công cụ phổ biến để thực hiện bước biên dịch này bao gồm:
+-Sử dụng Extension trên VS Code (Đơn giản nhất cho người mới bắt đầu): Bạn cài đặt extension tên là Live Sass Compiler. Sau khi bật tính năng "Watch Sass", mỗi lần bạn nhấn Lưu (Save) file .scss, công cụ này sẽ tự động chạy ngầm và tạo ra một file .css song song nằm ngay bên cạnh để bạn nhúng vào file HTML.
+-Sử dụng công cụ dòng lệnh (Command Line Interface - CLI): Cài đặt gói sass thông qua Node.js (NPM). Bạn chạy câu lệnh trong cửa sổ Terminal:Bashsass style.scss style.css --watch
+(Lệnh này có nghĩa là: Hãy liên tục theo dõi file style.scss, nếu có thay đổi gì thì tự động biên dịch và cập nhật đè vào file style.css ngay lập tức).
+-Sử dụng các công cụ Build Tools mạnh mẽ trong dự án lớn: Các lập trình viên chuyên nghiệp thường tích hợp bước biên dịch này vào các hệ thống tự động hóa như Vite, Webpack, hoặc Gulp để vừa biên dịch vừa tự động nén nhỏ dung lượng file CSS (Minify) trước khi tải lên máy chủ.
