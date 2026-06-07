@@ -231,5 +231,149 @@ Dự án sử dụng trình biên dịch **Dart Sass** chính thức được kh
 
 ### Cách 1: Sử dụng Command Line (CLI) trực tiếp trong Terminal
 Để biên dịch file `scss/style.scss` thành file `style.css` thông thường bên ngoài, chạy lệnh:
-```bash
+"```"bash
 sass scss/style.scss style.css
+
+Phần C:
+Câu C2:
+I. WIREFRAME (SƠ ĐỒ BỐ CỤC) CHO 3 KÍCH THƯỚC1. Giao diện Mobile ($< 768px$)Những gì bị ẩn: Ẩn bớt 3 ảnh món ăn ít hấp dẫn nhất (chỉ giữ lại Grid 3 ảnh thay vì 6 ảnh để giảm tải dung lượng và độ dài cuộn trang). Ẩn bớt bản đồ trực quan hoặc thu nhỏ lại thành một nút bấm "Xem bản đồ đường đi" dẫn link ra ứng dụng Google Maps.Vị trí Form đặt bàn: Nằm ở vị trí trung tâm, xếp dọc 1 cột ngay dưới Grid ảnh món ăn để kích thích hành động chuyển đổi của khách hàng.Plaintext┌───────────────────────────────────────────┐
+│ HEADER (Logo / Nút gọi Hotline )       │
+├───────────────────────────────────────────┤
+│                                           │
+│ HERO IMAGE (Ảnh không gian nhà hàng)       │
+│                                           │
+├───────────────────────────────────────────┤
+│ GRID 3 ẢNH MÓN ĂN (Xếp dọc 1 cột)         │
+│ [Ảnh 1]                                   │
+│ [Ảnh 2]                                   │
+│ [Ảnh 3]                                   │
+├───────────────────────────────────────────┤
+│ FORM ĐẶT BÀN (Các ô Input xếp dọc 1 cột)  │
+│ [Ngày / Giờ / Số người / Ghi chú]         │
+│ [NÚT ĐẶT BÀN NGAY]                        │
+├───────────────────────────────────────────┤
+│ BẢN ĐỒ GOOGLE MAPS (Full width nhỏ)       │
+├───────────────────────────────────────────┤
+│ FOOTER                                    │
+└───────────────────────────────────────────┘
+2. Giao diện Tablet ($768px - 1023px$)Grid ảnh mấy cột: Chuyển sang cấu trúc lưới 2 cột hiển thị đầy đủ 6 món ăn (mỗi hàng 2 ảnh x 3 hàng).Vị trí Bản đồ: Bản đồ được đẩy xuống góc cuối trang, nằm trải dài toàn màn hình (Full width) ngay phía trên Footer để người dùng dễ quan sát trên màn hình máy tính bảng.Plaintext┌───────────────────────────────────────────┐
+│ HEADER (Logo trái ───────────────── Hotline phải) │
+├───────────────────────────────────────────┤
+│               HERO IMAGE                  │
+├───────────────────────────────────────────┤
+│ GRID MÓN ĂN (2 Cột x 3 Hàng)              │
+│ ┌───────────────────┬───────────────────┐ │
+│ │      [Ảnh 1]      │      [Ảnh 2]      │ │
+│ ├───────────────────┼───────────────────┤ │
+│ │      [Ảnh 3]      │      [Ảnh 4]      │ │
+│ ├───────────────────┼───────────────────┤ │
+│ │      [Ảnh 5]      │      [Ảnh 6]      │ │
+│ └───────────────────┴───────────────────┘ │
+├───────────────────────────────────────────┤
+│ FORM ĐẶT BÀN (Chia đôi: 2 cột input)      │
+├───────────────────────────────────────────┤
+│ BẢN ĐỒ GOOGLE MAPS (Trải ngang)            │
+├───────────────────────────────────────────┤
+│ FOOTER                                    │
+└───────────────────────────────────────────┘
+3. Giao diện Desktop ($\ge 1024px$)Layout bao nhiêu cột: Layout chính chuyển đổi thành 3 cột lớn toàn trang (Tận dụng cơ chế grid-template-areas).Sidebar có không: Có. Sidebar bên phải đóng vai trò là tổ hợp cố định (Sticky Sidebar) chứa Form đặt bàn và Bản đồ thu nhỏ, giúp khách hàng cuộn xem ảnh không gian/món ăn ở bên trái mà form đặt bàn vẫn luôn nằm trong tầm mắt.Plaintext┌───────────────────────────────────────────────────────────────────────────┐
+│ HEADER (Thanh điều hướng rộng + Hotline)                                  │
+├───────────────────────────────────────────────────────────────────────────┤
+│ HERO IMAGE (Ảnh Panorama góc rộng)                                        │
+├──────────────────────────────────────────────────────┬────────────────────┤
+│ GRID MÓN ĂN CHÍNH (Chiếm 2 cột bên trái)              │ SIDEBAR CỐ ĐỊNH    │
+│ ┌─────────────────────────┬─────────────────────────┐ │ (Chiếm 1 cột phải) │
+│ │         [Ảnh 1]         │         [Ảnh 2]         │ │                    │
+│ ├─────────────────────────┼─────────────────────────┤ │ ┌────────────────┐ │
+│ │         [Ảnh 3]         │         [Ảnh 4]         │ │ │ FORM ĐẶT BÀN   │ │
+│ ├─────────────────────────┼─────────────────────────┤ │ │ (Gom gọn gàng) │ │
+│ │         [Ảnh 5]         │         [Ảnh 6]         │ │ └────────────────┘ │
+│ └─────────────────────────┴─────────────────────────┘ │ ┌────────────────┐ │
+│                                                       │ │ BẢN ĐỒ MINI    │ │
+│                                                       │ │ GOOGLE MAPS    │ │
+│                                                       │ └────────────────┘ │
+├──────────────────────────────────────────────────────┴────────────────────┤
+│ FOOTER                                                                    │
+└───────────────────────────────────────────────────────────────────────────┘
+II. CSS SKELETON LAYOUT (MOBILE-FIRST)Dưới đây là cấu trúc CSS Layout thuần túy ứng dụng cấu trúc CSS Grid + Template Areas giúp dịch chuyển vị trí các thành phần cực kỳ mượt mà giữa các thiết bị mà không cần sửa HTML.1. Cấu trúc HTML KhungHTML<div class="restaurant-layout">
+    <header class="header">Header</header>
+    <section class="hero">Hero Image</section>
+    <main class="menu-grid">Grid 6 Ảnh Món Ăn</main>
+    <aside class="booking-form">Form Đặt Bàn</aside>
+    <div class="map">Bản đồ Google Maps</div>
+    <footer class="footer">Footer</footer>
+</div>
+2. Mã CSS Layout SkeletonCSS/* ==========================================================================
+   1. GIAO DIỆN MẶC ĐỊNH CHO MOBILE (< 768px) - TRIỂN KHAI 1 CỘT DỌC
+   ========================================================================== */
+.restaurant-layout {
+    display: grid;
+    /* Định nghĩa dòng chảy xếp chồng từ trên xuống dưới */
+    grid-template-areas: 
+        "header"
+        "hero"
+        "menu"
+        "form"
+        "map"
+        "footer";
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+}
+
+/* Áp tên vùng vào các class */
+.header       { grid-area: header; }
+.hero         { grid-area: hero; height: 40vh; }
+.menu-grid    { grid-area: menu; display: grid; grid-template-columns: 1fr; gap: 10px; } 
+.booking-form { grid-area: form; }
+.map          { grid-area: map; height: 250px; }
+.footer       { grid-area: footer; }
+
+
+/* ==========================================================================
+   2. BREAKPOINT TABLET (>= 768px) - NÂNG CẤP LƯỚI MÓN ĂN VÀ KHÔNG GIAN
+   ========================================================================== */
+@media (min-width: 768px) {
+    .restaurant-layout {
+        gap: 25px;
+        padding: 20px;
+    }
+
+    /* Đổi Grid món ăn thành 2 cột trên Máy tính bảng */
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ==========================================================================
+   3. BREAKPOINT DESKTOP (>= 1024px) - TÁI CẤU TRÚC SANG 3 CỘT LAYOUT VÀ SIDEBAR
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .restaurant-layout {
+        grid-template-columns: repeat(3, 1fr); /* Chia tổng không gian làm 3 cột bằng nhau */
+        
+        /* Tái định hình sơ đồ: Đẩy Form và Map sang cột 3 bên phải làm Sidebar cố định */
+        grid-template-areas: 
+            "header header header"
+            "hero   hero   hero"
+            "menu   menu   form"
+            "menu   menu   map"
+            "footer footer footer";
+        gap: 30px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Đổi Grid món ăn thành 2 cột lớn chiếm trọn vùng không gian "menu" (2/3 chiều rộng trang) */
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tạo hiệu ứng dính (Sticky) cho Sidebar chứa Form đặt bàn khi cuộn chuột */
+    .booking-form {
+        position: sticky;
+        top: 20px;
+        align-self: start;
+    }
+}
